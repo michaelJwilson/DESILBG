@@ -5,3 +5,10 @@ target/proposals/tiles/skies*
 target/proposals/tiles/stds*
 target/proposals/fiberassign/fiberassign-*
 target/proposals/indata/CFHTLSD2_mtl.fits
+target/proposals/indata/LBGLAE.fits
+target/proposals/goldrush/
+target/proposals/lala/
+target/proposals/sxds_laes.txt
+target/proposals/tiles/tiles_9999999.fits
+target/proposals/indata/LBGLAE.fits
+target/proposals/docs/.ipynb_checkpoints/desilbg-checkpoint.ipynb
