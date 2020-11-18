@@ -95,32 +95,37 @@ sadrops      = splash[sadrops]
 ##
 fig, axes    = plt.subplots(1, 3, figsize=(15, 3)) 
 
-axes[0].scatter(sxdrops['g-r'], sxdrops['u-g'], c=sxdrops['MAG_ISO_hsc_i'], lw=0.0, s=2, vmin=22., vmax=26., marker='.')
+sampling     = 5
+
+axes[0].scatter(sxdrops['g-r'][::sampling], sxdrops['u-g'][::sampling], c=sxdrops['MAG_ISO_hsc_i'][::sampling], lw=0.0, s=2, vmin=22., vmax=26., marker='.')
 
 axes[0].set_xlabel('$g-r$')
 axes[0].set_ylabel('$u-g$')
 
-axes[0].set_xlim(-1.5, 4.)
-axes[0].set_ylim(-1.5, 4.)
+axes[0].set_xlim(-1., 2.)
+axes[0].set_ylim(-1., 4.)
 
-im        = axes[1].scatter(sudrops['g-r'], sudrops['u-g'], c=sudrops['MAG_ISO_hsc_i'], lw=0.0, s=2, vmin=22., vmax=26., marker='.')
+im        = axes[1].scatter(sudrops['g-r'][::sampling], sudrops['u-g'][::sampling], c=sudrops['MAG_ISO_hsc_i'][::sampling], lw=0.0, s=2, vmin=22., vmax=26., marker='.')
 
 axes[1].set_xlabel('$g-r$')
 axes[1].set_ylabel('$u-g$')
 
-axes[1].set_xlim(-1.5, 4.)
-axes[1].set_ylim(-1.5, 4.)
+axes[1].set_xlim(-1., 2.)
+axes[1].set_ylim(-1., 4.)
 
-axes[2].scatter(sgdrops['r-i'], sgdrops['g-r'], c=sgdrops['MAG_ISO_hsc_i'], lw=0.0, s=2, vmin=22., vmax=26., marker='.')
+axes[2].scatter(sgdrops['r-i'][::sampling], sgdrops['g-r'][::sampling], c=sgdrops['MAG_ISO_hsc_i'][::sampling], lw=0.0, s=2, vmin=22., vmax=26., marker='.')
 
 axes[2].set_xlabel('$r-i$')
 axes[2].set_ylabel('$g-r$')
 
-axes[2].set_xlim(-1.5, 4.)
-axes[2].set_ylim(-1.5, 4.)           
+axes[2].set_xlim(-1., 2.)
+axes[2].set_ylim(-1., 4.)           
 
-cax = fig.add_axes([0.415, 0.2, 0.2, 0.05])
+cax = fig.add_axes([0.415, 0.3, 0.2, 0.05])
+
 fig.colorbar(im, cax=cax, orientation='horizontal')
+
+plt.tight_layout()
 
 # fig.suptitle('Splash BX, $u$ & $g$ dropouts')
 
@@ -133,7 +138,7 @@ pl.clf()
 dz         = 0.1
 bins       = np.arange(0.0, 4.5, dz) 
 
-fig, ax    = plt.subplots(1, 1, figsize=(5,5)) 
+fig, ax    = plt.subplots(1, 1, figsize=(5,3)) 
 
 for sample, label, color in zip([sxdrops['ZPHOT'], sudrops['ZPHOT'], sgdrops['ZPHOT']], ['BX', '$u$', '$g$'], ['y', 'b', 'g']):
   cnts, lo = np.histogram(sample, bins=bins)
@@ -150,8 +155,36 @@ ax.set_ylabel('$dN$ / sq. deg. / $\Delta z = 0.1$')
 
 ax.legend(frameon=False)
 
-ax.set_title(r'SPLASH photo-$z$')
+# ax.set_title(r'SPLASH photo-$z$')
+
+plt.tight_layout()
 
 pl.savefig('Nz.pdf', rasterized=True)
 
 ## -- Magnitude distribution.
+dm   = 0.2
+bins = np.arange(15., 28., dm)
+
+fig, ax = plt.subplots(1, 1, figsize=(5,3))
+
+for sample, label, color in zip([sxdrops['MAG_AUTO_hsc_r'], sudrops['MAG_AUTO_hsc_r'], sgdrops['MAG_AUTO_hsc_i']], ['BX', '$u$', '$g$'], ['y', 'b', 'g']):
+    cnts, lo = np.histogram(sample, bins=bins)
+
+    mid      = lo + 0.5 * dm
+    cnts     = cnts / Area
+
+    ax.bar(mid[:-1], cnts, alpha=0.5, color=color, label=label, width=dm)
+
+ax.set_xlim(19.,  26.)
+ax.set_ylim(10., 1.e4)
+
+ax.set_xlabel('$m_{UV}$')
+ax.set_ylabel('N / sq. deg. / $\Delta m_{UV} = 0.2$')
+ax.set_yscale('log')
+
+ax.legend(frameon=False)
+# ax.set_title(r'SPLASH $m_{\rm{AB}}$')
+
+plt.tight_layout()
+
+pl.savefig('Nm.pdf', rasterized=True)
