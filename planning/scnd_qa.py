@@ -1,6 +1,8 @@
-from astropy.table import Table
-from desitarget.sv1.sv1_targetmask import desi_mask, bgs_mask, mws_mask
-from desitarget.sv1.sv1_targetmask import scnd_mask
+import numpy as np
+
+from   astropy.table                 import Table
+from   desitarget.sv1.sv1_targetmask import desi_mask, bgs_mask, mws_mask
+from   desitarget.sv1.sv1_targetmask import scnd_mask
 
 '''
 scnd_mask.names()                                                                                                                                                                                                                      
@@ -62,12 +64,26 @@ These are the secondary programs for the CFHTLS-W3 field, in order of priority:
 
 # * full fiber reach on all petals.
 # * LBG_TOMOG,ISM_CGM_QGP,HSC_HIZ_SNE from the secondary targets (priorities 4000, 4100, 4000, respectively)
-# * QSOs as fillers.
+# * Main QSOs as fillers.
 # * 10 standard per petal + 20 sky per petal
 
-dat = Table.read('/global/cfs/cdirs/desi/target/catalogs/dr9/0.50.0/targets/sv1/secondary/dark/sv1targets-dark-secondary.fits')
+desilbg  = Table.read('/global/cscratch1/sd/mjwilson/DESILBG/Feb21/targets/desi_lbg.fits')
+dat      = Table.read('/global/cfs/cdirs/desi/target/catalogs/dr9/0.50.0/targets/sv1/secondary/dark/sv1targets-dark-secondary.fits')
 
 for x in dat.dtype.names:
     print(x)
 
-dat.pprint()
+hizsne   = (dat['SV1_SCND_TARGET'] & scnd_mask['HSC_HIZ_SNE']) != 0 
+tomog    = (dat['SV1_SCND_TARGET'] & scnd_mask['LBG_TOMOG'])   != 0 
+ism      = (dat['SV1_SCND_TARGET'] & scnd_mask['ISM_CGM_QGP']) != 0
+
+het_main = (dat['SV1_SCND_TARGET'] & scnd_mask['HETDEX_MAIN']) != 0
+het_hp   = (dat['SV1_SCND_TARGET'] & scnd_mask['HETDEX_HP'])   != 0
+
+for x in [ism , hizsne, tomog, het_hp, het_main]:
+    print(np.count_nonzero(x))
+
+tomog    = dat[tomog]
+# tomog.pprint()
+
+# np.count_nonzero(tomog['RA'].data == desilbg['RA'].data)
