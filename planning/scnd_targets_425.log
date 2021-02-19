@@ -1,0 +1,43 @@
+running on 4 processors
+INFO:cuts.py:2743:select_targets: Running on the sv1 survey
+INFO:cuts.py:2806:select_targets: Processing files in (nside=8, pixel numbers=[425]) HEALPixels
+INFO:cuts.py:2811:select_targets: Running on Node nid00079
+WARNING: leap-second auto-update failed due to the following exception: RuntimeError('Cache is locked after 5.04 s. This may indicate an astropy bug or that kill -9 was used. If you want to unlock the cache remove the directory /global/homes/m/mjwilson/.astropy/cache/download/py3/lock. Lock claims to be held by process .') [astropy.time.core]
+INFO:cuts.py:2880:select_targets: Retrieve extra Gaia-only (backup) objects...t = 3.6 mins
+WARNING:geomask.py:1146:hp_in_box: Max RA (360) and Min RA (0) separated by > 180o...
+WARNING:geomask.py:1148:hp_in_box: ...will only limit to passed Declinations
+INFO:gfa.py:382:all_gaia_in_tiles: Retrieved 91791 Gaia objects...t = 0.1 mins
+INFO:sv1_cuts.py:115:isGAIA_STD: Isolating Gaia-only standards...t=3.7s
+INFO:sv1_cuts.py:127:isGAIA_STD: Read 0/36 files for Gaia-only standards...t=3.7s
+INFO:sv1_cuts.py:127:isGAIA_STD: Read 25/36 files for Gaia-only standards...t=8.0s
+INFO:io.py:1886:get_checksums: Calculated checksum for 1/7 files...t=11.0s
+INFO:io.py:1886:get_checksums: Calculated checksum for 2/7 files...t=11.3s
+INFO:io.py:1886:get_checksums: Calculated checksum for 3/7 files...t=11.6s
+INFO:io.py:1886:get_checksums: Calculated checksum for 4/7 files...t=23.7s
+INFO:io.py:1886:get_checksums: Calculated checksum for 5/7 files...t=23.7s
+INFO:io.py:1886:get_checksums: Calculated checksum for 6/7 files...t=34.9s
+INFO:io.py:1886:get_checksums: Calculated checksum for 7/7 files...t=48.8s
+INFO:io.py:1910:get_checksums: Comparing checksums to /global/cfs/cdirs/cosmo/data/legacysurvey/dr9/south/sweep/9.0/legacysurvey_dr9_south_sweep_9.0.sha256sum
+INFO:io.py:1910:get_checksums: Comparing checksums to /global/cfs/cdirs/cosmo/data/legacysurvey/dr9/north/sweep/9.0/legacysurvey_dr9_north_sweep_9.0.sha256sum
+INFO:select_sv_targets:176:<module>: making directory.../global/cscratch1/sd/mjwilson/secondary/sv1/outdata/0.50.0.dev4501/priminfo-dr9-0.50.0.dev4501
+INFO:select_sv_targets:187:<module>: writing files of primary matches to.../global/cscratch1/sd/mjwilson/secondary/sv1/outdata/0.50.0.dev4501/priminfo-dr9-0.50.0.dev4501/sv1targets-no-obscon-hp-425.fits
+INFO:secondary.py:497:match_secondary: running on the sv1 survey...
+INFO:secondary.py:532:match_secondary: Matching primary and secondary targets for /global/cscratch1/sd/mjwilson/secondary/sv1/outdata/0.50.0.dev4501/priminfo-dr9-0.50.0.dev4501/sv1targets-no-obscon-hp-425.fits at 1.0"...t=393.7s
+INFO:secondary.py:571:match_secondary: Test if secondaries can update 86161 matched primaries
+INFO:secondary.py:577:match_secondary: New priority, numobs, obscon for 20743 matched primaries
+INFO:secondary.py:617:match_secondary: Reading input sweep files...t=408.1s
+INFO:secondary.py:629:match_secondary: Read 4163748 sources from 1/7 sweep files...t=451.1s
+INFO:secondary.py:629:match_secondary: Read 112281 sources from 2/7 sweep files...t=452.6s
+INFO:secondary.py:629:match_secondary: Read 34452 sources from 3/7 sweep files...t=468.5s
+INFO:secondary.py:629:match_secondary: Read 4070265 sources from 4/7 sweep files...t=524.7s
+INFO:secondary.py:629:match_secondary: Read 5907 sources from 5/7 sweep files...t=524.8s
+INFO:secondary.py:629:match_secondary: Read 3988544 sources from 6/7 sweep files...t=569.6s
+INFO:secondary.py:629:match_secondary: Read 4115126 sources from 7/7 sweep files...t=612.2s
+INFO:secondary.py:634:match_secondary: Total sources read: 16337683
+INFO:secondary.py:644:match_secondary: Matching secondary targets to sweep files...t=619.8s
+INFO:secondary.py:651:match_secondary: Found 127187 additional matches...t=625.5s
+INFO:secondary.py:665:match_secondary: Writing 223045 secondary target matches to /global/cscratch1/sd/mjwilson/secondary/sv1/outdata/0.50.0.dev4501/priminfo-dr9-0.50.0.dev4501/sv1targets-no-obscon-hp-425.fits...t=627.4s
+INFO:secondary.py:673:match_secondary: Done...t=628.0s
+INFO:select_sv_targets:220:<module>: 219577 targets written to /global/cscratch1/sd/mjwilson/dr9/0.50.0.dev4501/targets/sv1/resolve/bright/sv1targets-bright-hp-425.fits...t=964.0s
+INFO:select_sv_targets:220:<module>: 660984 targets written to /global/cscratch1/sd/mjwilson/dr9/0.50.0.dev4501/targets/sv1/resolve/dark/sv1targets-dark-hp-425.fits...t=999.3s
+INFO:select_sv_targets:220:<module>: 26679 targets written to /global/cscratch1/sd/mjwilson/gaiadr2/0.50.0.dev4501/targets/sv1/resolve/supp/sv1targets-supp-hp-425.fits...t=1000.3s

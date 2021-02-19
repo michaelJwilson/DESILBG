@@ -1,0 +1,269 @@
+WARNING: leap-second auto-update failed due to the following exception: RuntimeError('Cache is locked after 5.01 s. This may indicate an astropy bug or that kill -9 was used. If you want to unlock the cache remove the directory /global/homes/m/mjwilson/.astropy/cache/download/py3/lock. Lock claims to be held by process .') [astropy.time.core]
+INFO: 0.0s	start
+INFO: 0.0s	running with desitarget code version: 0.50.0.dev4501
+INFO: 0.0s	running with desimodel code version: 0.14.0.dev628
+INFO: 0.0s	setting new_obstime=2021-02-19T00:00:00.000, i.e. MJD=59264.0 to update coordinates with proper motion
+INFO: 0.2s	directory for targ: ['/global/cfs/cdirs/desi/target/catalogs/dr9/0.50.0/targets/sv1/resolve/dark', '/global/cfs/cdirs/desi/target/catalogs/gaiadr2/0.50.0/targets/sv1/resolve/supp']
+INFO: 0.2s	directory for scnd: /global/cscratch1/sd/mjwilson/dr9/0.50.0.dev4501/targets/sv1/secondary/dark/
+INFO: 0.2s	directory for sky: /global/cfs/cdirs/desi/target/catalogs/dr9/0.50.0/skies
+INFO: 0.2s	directory for skysupp: /global/cfs/cdirs/desi/target/catalogs/gaiadr2/0.50.0/skies-supp
+INFO: 0.2s	directory for gfa: /global/cfs/cdirs/desi/target/catalogs/dr9/0.50.0/gfas
+INFO: 0.2s	directory for svn tiles: /global/cfs/cdirs/desi/target/fiberassign/tiles/trunk
+INFO: 0.2s	will process 1 tile(s) with tileid=82000
+INFO: 0.3s	args: doclean=n , dr=dr9 , dtver=0.50.0 , faflavor=sv1scndcosmos , forcetileid=n , intileid=None , m31cen=n , noreobs=None , outdir=/global/cscratch1/sd/mjwilson/SCNDCOSMOS/ , pmtime=2021-02-19T00:00:00.000 , priority=default , rundate=2020-01-01T00:00:00 , scnd=/global/cscratch1/sd/mjwilson/dr9/0.50.0.dev4501/targets/sv1/secondary/dark/ , tiledec=2.2 , tileid=82000 , tilera=150.12
+INFO: 0.3s	fdict: survey=sv1 , dtobscon=dark , obscon=DARK|GRAY|BRIGHT , msks={'SV1_DESI_TARGET': 'QSO', 'SV1_SCND_TARGET': 'LBG_TOMOG,ISM_CGM_QGP,HSC_HIZ_SNE'} , stdmsks={'SV1_DESI_TARGET': 'STD_WD,STD_FAINT'} , nskypet=20 , nstdpet=10
+INFO: 0.3s	start generating /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-tiles.fits
+INFO: 0.4s	/global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-tiles.fits written
+INFO: 0.4s	start generating /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-sky.fits
+INFO: 0.4s	reading input targets from ['/global/cfs/cdirs/desi/target/catalogs/dr9/0.50.0/skies', '/global/cfs/cdirs/desi/target/catalogs/gaiadr2/0.50.0/skies-supp']
+WARNING:io.py:584:write_targets: qso_selection method not specified for output file
+INFO: 9.6s	/global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-sky.fits written
+INFO: 9.6s	start generating /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-gfa.fits
+INFO: 9.6s	reading input targets from ['/global/cfs/cdirs/desi/target/catalogs/dr9/0.50.0/gfas']
+INFO: 11.6s	keeping 29528 targets to /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-gfa.fits
+INFO: 11.6s	updating RA,DEC at 2021.1348391512663 with PM for 28307/29528 targets passing AEN; maximum changes: RA=-4.0,2.1 arcsec, DEC=-3.0,0.6 arcsec
+INFO: 11.6s	updating REF_EPOCH to 2021.1348391512663 for all 29528 targets
+WARNING:io.py:584:write_targets: qso_selection method not specified for output file
+INFO: 11.9s	/global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-gfa.fits written
+INFO: 11.9s	start generating /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-std.fits
+['/global/cfs/cdirs/desi/target/catalogs/dr9/0.50.0/targets/sv1/resolve/dark', '/global/cfs/cdirs/desi/target/catalogs/gaiadr2/0.50.0/targets/sv1/resolve/supp']
+INFO: 11.9s	reading input targets from ['/global/cfs/cdirs/desi/target/catalogs/dr9/0.50.0/targets/sv1/resolve/dark', '/global/cfs/cdirs/desi/target/catalogs/gaiadr2/0.50.0/targets/sv1/resolve/supp']
+INFO: 51.9s	keeping 32 SV1_DESI_TARGET STD_WD targets
+INFO: 51.9s	keeping 519 SV1_DESI_TARGET STD_FAINT targets
+INFO: 51.9s	keeping 548/104531 stds after having cut on {'SV1_DESI_TARGET': 'STD_WD,STD_FAINT'} and removed {'SV1_DESI_TARGET': 'QSO', 'SV1_SCND_TARGET': 'LBG_TOMOG,ISM_CGM_QGP,HSC_HIZ_SNE'}
+INFO: 51.9s	updating RA,DEC at 2021.1348391512663 with PM for 547/548 targets passing AEN; maximum changes: RA=-4.0,0.8 arcsec, DEC=-1.6,0.2 arcsec
+INFO: 51.9s	updating REF_EPOCH to 2021.1348391512663 for all 548 targets
+INFO: 52.0s	mtl targets written to /global/cscratch1/sd/mjwilson/SCNDCOSMOS/dr9/0.50.0.dev4501/mtl/sv1/no-obscon/sv1mtl-no-obscon-hp-X.fits , moved to /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-std.fits
+INFO: 52.0s	start generating /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-targ.fits
+INFO: 52.0s	reading input targets from ['/global/cfs/cdirs/desi/target/catalogs/dr9/0.50.0/targets/sv1/resolve/dark', '/global/cfs/cdirs/desi/target/catalogs/gaiadr2/0.50.0/targets/sv1/resolve/supp']
+INFO: 94.2s	keeping 5558 SV1_DESI_TARGET QSO targets
+INFO: 94.2s	keeping 585 SV1_SCND_TARGET LBG_TOMOG targets
+INFO: 94.2s	keeping 16 SV1_SCND_TARGET ISM_CGM_QGP targets
+INFO: 94.2s	keeping 165 SV1_SCND_TARGET HSC_HIZ_SNE targets
+INFO: 94.2s	keeping 6274/104531 targets after having cut on {'SV1_DESI_TARGET': 'QSO', 'SV1_SCND_TARGET': 'LBG_TOMOG,ISM_CGM_QGP,HSC_HIZ_SNE'}
+INFO: 94.2s	updating RA,DEC at 2021.1348391512663 with PM for 598/6274 targets passing AEN; maximum changes: RA=-0.1,0.1 arcsec, DEC=-0.3,0.1 arcsec
+INFO: 94.2s	updating REF_EPOCH to 2021.1348391512663 for all 6274 targets
+INFO: 94.3s	mtl targets written to /global/cscratch1/sd/mjwilson/SCNDCOSMOS/dr9/0.50.0.dev4501/mtl/sv1/no-obscon/sv1mtl-no-obscon-hp-X.fits , moved to /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-targ.fits
+INFO: 94.3s	start generating /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-scnd.fits
+INFO: 115.9s	keeping 104802 SV1_SCND_TARGET LBG_TOMOG targets
+INFO: 115.9s	keeping 53 SV1_SCND_TARGET ISM_CGM_QGP targets
+INFO: 115.9s	keeping 800 SV1_SCND_TARGET HSC_HIZ_SNE targets
+INFO: 115.9s	keeping 105640/146161 secondary targets after having cut on {'SV1_SCND_TARGET': 'LBG_TOMOG,ISM_CGM_QGP,HSC_HIZ_SNE'}
+INFO: 115.9s	updating RA,DEC at 2021.1348391512663 with PM for 105640/105640 targets passing AEN; maximum changes: RA=0.0,0.0 arcsec, DEC=0.0,0.0 arcsec
+INFO: 115.9s	updating REF_EPOCH to 2021.1348391512663 for all 105640 targets
+INFO: 116.3s	mtl targets written to /global/cscratch1/sd/mjwilson/SCNDCOSMOS/dr9/0.50.0.dev4501/mtl/sv1/no-obscon/sv1mtl-no-obscon-hp-X.fits , moved to /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-scnd.fits
+INFO: 116.3s	start running fiber assignment
+INFO: 116.3s	tileid=082000: running raw fiber assignment (fba_run) with opts=--targets ; /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-targ.fits ; /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-std.fits ; /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-scnd.fits ; --rundate ; 2020-01-01T00:00:00 ; --overwrite ; --write_all_targets ; --footprint ; /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-tiles.fits ; --dir ; /global/cscratch1/sd/mjwilson/SCNDCOSMOS/ ; --sky ; /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-sky.fits ; --sky_per_petal ; 20 ; --standards_per_petal ; 10 ; --gfafile ; /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-gfa.fits
+INFO: Loaded focalplane for time stamp 2020-01-01 00:00:00
+INFO: Focalplane has 0 fibers that are stuck / broken
+INFO: Target file /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-targ.fits has 6274 rows.  Reading in chunks of 1000000
+INFO: Read target file /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-targ.fits:  0.03 seconds (1 calls)
+INFO: Target file /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-std.fits has 548 rows.  Reading in chunks of 1000000
+INFO: Read target file /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-std.fits:  0.01 seconds (1 calls)
+INFO: Target file /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-scnd.fits has 105640 rows.  Reading in chunks of 1000000
+INFO: Read target file /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-scnd.fits:  0.23 seconds (1 calls)
+INFO: Target file /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-sky.fits has 163387 rows.  Reading in chunks of 1000000
+INFO: Read target file /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-sky.fits:  0.94 seconds (1 calls)
+INFO: Building target tree:  0.06 seconds (1 calls)
+INFO: Computing targets available to all tile / locations:  0.44 seconds (1 calls)
+INFO: Computing tile / locations available to all objects:  0.25 seconds (1 calls)
+INFO: Assignment constructor project targets:  0.24 seconds (1 calls)
+INFO: assign unused science:  considering 5000 locations of positioner type "POS"
+INFO: assign unused science:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Assign science targets to unused locations:  0.32 seconds (1 calls)
+INFO: redist:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Redistribute science targets:  0.01 seconds (1 calls)
+INFO: assign unused standard:  considering 5000 locations of positioner type "POS"
+INFO: assign unused standard:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Assign up to 10 standard targets per petal to unused locations:  0.00 seconds (1 calls)
+INFO: assign unused sky:  considering 5000 locations of positioner type "POS"
+INFO: assign unused sky:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Assign up to 20 sky targets per petal to unused locations:  0.01 seconds (1 calls)
+INFO: assign unused suppsky:  considering 5000 locations of positioner type "POS"
+INFO: assign unused suppsky:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Assign up to 20 suppsky targets per petal to unused locations:  0.00 seconds (1 calls)
+INFO: assign force standard:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Force assignment of 10 standard targets per petal:  0.04 seconds (1 calls)
+INFO: assign force sky:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Force assignment of 20 sky targets per petal:  0.14 seconds (1 calls)
+INFO: assign force suppsky:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Force assignment of 20 suppsky targets per petal:  0.04 seconds (1 calls)
+INFO: assign unused science:  considering 5000 locations of positioner type "POS"
+INFO: assign unused science:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Assign science targets to unused locations:  0.00 seconds (1 calls)
+INFO: assign unused standard:  considering 5000 locations of positioner type "POS"
+INFO: assign unused standard:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Assign standard targets to unused locations:  0.00 seconds (1 calls)
+INFO: assign unused sky:  considering 5000 locations of positioner type "POS"
+INFO: assign unused sky:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Assign sky targets to unused locations:  0.01 seconds (1 calls)
+INFO: assign unused suppsky:  considering 5000 locations of positioner type "POS"
+INFO: assign unused suppsky:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Assign suppsky targets to unused locations:  0.00 seconds (1 calls)
+INFO: assign unused safe:  considering 5000 locations of positioner type "POS"
+INFO: assign unused safe:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Assign safe targets to unused locations:  0.00 seconds (1 calls)
+INFO: assign unused sky:  considering 20 locations of positioner type "ETC"
+INFO: assign unused sky:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Assign sky targets to unused locations:  0.00 seconds (1 calls)
+INFO: assign unused suppsky:  considering 20 locations of positioner type "ETC"
+INFO: assign unused suppsky:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Assign suppsky targets to unused locations:  0.00 seconds (1 calls)
+INFO: assign unused safe:  considering 20 locations of positioner type "ETC"
+INFO: assign unused safe:  working on tiles -1 (index 0) to -1 (index 0)
+INFO: Assign safe targets to unused locations:  0.00 seconds (1 calls)
+INFO: Finding overlap of 29528 GFA targets on 1 tiles
+INFO: Generating GFA targets tables
+INFO:   Identifying GFA targets:  0.12 seconds (1 calls)
+INFO: Writing tile 82000
+INFO: Write output files:  1.67 seconds (1 calls)
+INFO: Global timer: Assign remaining unassigned fibers:  0.01 seconds (1 calls)
+INFO: Global timer: Assign sky monitor fibers:  0.00 seconds (1 calls)
+INFO: Global timer: Assign unused fibers to science targets:  0.32 seconds (1 calls)
+INFO: Global timer: Assign unused fibers to sky:  0.01 seconds (1 calls)
+INFO: Global timer: Assign unused fibers to standards:  0.00 seconds (1 calls)
+INFO: Global timer: Assign unused fibers to supp_sky:  0.00 seconds (1 calls)
+INFO: Global timer: Assignment ctor: project targets:  0.24 seconds (1 calls)
+INFO: Global timer: Assignment ctor: total:  0.24 seconds (1 calls)
+INFO: Global timer: Compute Locations Available:  0.25 seconds (1 calls)
+INFO: Global timer: Compute Targets Available:  0.44 seconds (1 calls)
+INFO: Global timer: Construct Assignment:  0.24 seconds (1 calls)
+INFO: Global timer: Construct target tree:  0.06 seconds (1 calls)
+INFO: Global timer: Force assignment of sufficient sky:  0.14 seconds (1 calls)
+INFO: Global timer: Force assignment of sufficient standards:  0.04 seconds (1 calls)
+INFO: Global timer: Force assignment of sufficient supp_sky:  0.05 seconds (1 calls)
+INFO: Global timer: Redistribute science targets:  0.01 seconds (1 calls)
+INFO: Global timer: force sky: local tile availability:  0.13 seconds (1 calls)
+INFO: Global timer: force sky: local tile compute science assignment:  0.00 seconds (1 calls)
+INFO: Global timer: force sky: total:  0.14 seconds (1 calls)
+INFO: Global timer: force standard: local tile availability:  0.04 seconds (1 calls)
+INFO: Global timer: force standard: local tile compute science assignment:  0.00 seconds (1 calls)
+INFO: Global timer: force standard: total:  0.04 seconds (1 calls)
+INFO: Global timer: force suppsky: local tile availability:  0.04 seconds (1 calls)
+INFO: Global timer: force suppsky: local tile compute science assignment:  0.00 seconds (1 calls)
+INFO: Global timer: force suppsky: total:  0.04 seconds (1 calls)
+INFO: Global timer: redistribute science: total:  0.01 seconds (1 calls)
+INFO: Global timer: run_assign_full calculation:  5.35 seconds (1 calls)
+INFO: Global timer: run_assign_full write output:  1.79 seconds (1 calls)
+INFO: Global timer: unused safe: local tile availability:  0.00 seconds (2 calls)
+INFO: Global timer: unused safe: total:  0.00 seconds (2 calls)
+INFO: Global timer: unused science: local tile availability:  0.14 seconds (2 calls)
+INFO: Global timer: unused science: total:  0.31 seconds (2 calls)
+INFO: Global timer: unused sky: local tile availability:  0.01 seconds (3 calls)
+INFO: Global timer: unused sky: total:  0.02 seconds (3 calls)
+INFO: Global timer: unused standard: local tile availability:  0.00 seconds (2 calls)
+INFO: Global timer: unused standard: total:  0.00 seconds (2 calls)
+INFO: Global timer: unused suppsky: local tile availability:  0.00 seconds (3 calls)
+INFO: Global timer: unused suppsky: total:  0.00 seconds (3 calls)
+INFO: 123.5s	tileid=082000: merging input target data (merge_results) with argument=tiles = [82000] ; columns = None ; targets = ['/global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-gfa.fits', '/global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-targ.fits', '/global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-std.fits', '/global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-scnd.fits'] ; sky = ['/global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-sky.fits'] ; result_dir = /global/cscratch1/sd/mjwilson/SCNDCOSMOS/ ; copy_fba = False
+INFO: Read /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-gfa.fits into shared memory:  0.08 seconds (1 calls)
+INFO: Read /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-targ.fits into shared memory:  0.03 seconds (1 calls)
+INFO: Read /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-std.fits into shared memory:  0.02 seconds (1 calls)
+INFO: Read /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-scnd.fits into shared memory:  0.04 seconds (1 calls)
+INFO: Read /global/cscratch1/sd/mjwilson/SCNDCOSMOS/082000-sky.fits into shared memory:  0.39 seconds (1 calls)
+INFO: Reading raw tile data /global/cscratch1/sd/mjwilson/SCNDCOSMOS/fba-082000.fits
+INFO: Writing new data /global/cscratch1/sd/mjwilson/SCNDCOSMOS/fiberassign-082000.fits
+INFO: 127.6s	 deleting existing /global/cscratch1/sd/mjwilson/SCNDCOSMOS/fiberassign-082000.fits.gz
+INFO: 128.5s	 gzipping /global/cscratch1/sd/mjwilson/SCNDCOSMOS/fiberassign-082000.fits
+STD_WD 6
+WD_BINARIES_BRIGHT 0
+WD_BINARIES_DARK 0
+STD_FAINT 95
+STD_BRIGHT 56
+QStandardPaths: XDG_RUNTIME_DIR points to non-existing path '/run/user/74766', please create it with 0700 permissions.
+SV1_DESI_TARGET QSO:	assgn / parent = 272 / 5558
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:1970: RuntimeWarning: invalid value encountered in log10
+  - 2.5 * np.log10(dp["FLUX_" + band][mskpsel])
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:700: RuntimeWarning: invalid value encountered in true_divide
+  np.array(cs) / np.array(cps).astype(float),
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2013: RuntimeWarning: invalid value encountered in log10
+  * np.log10(
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2021: RuntimeWarning: invalid value encountered in log10
+  * np.log10(
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2030: RuntimeWarning: invalid value encountered in true_divide
+  mydict["FLUX_{}".format(xbands[0])]
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2038: RuntimeWarning: invalid value encountered in true_divide
+  mydict["FLUX_{}".format(ybands[0])]
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2037: RuntimeWarning: invalid value encountered in log10
+  * np.log10(
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2077: RuntimeWarning: invalid value encountered in true_divide
+  np.clip(((tmpc / tmpcp) - famin) / (famax - famin), 0, 1)
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2038: RuntimeWarning: divide by zero encountered in true_divide
+  mydict["FLUX_{}".format(ybands[0])]
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2117: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  ax = plt.subplot(gs[ix, 4])
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2163: RuntimeWarning: invalid value encountered in true_divide
+  c = (hb.get_array() / hbp.get_array()) / len(tileids)
+SV1_SCND_TARGET LBG_TOMOG:	assgn / parent = 4275 / 105387
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:1975: RuntimeWarning: divide by zero encountered in log10
+  - 2.5 * np.log10(mydict["FLUX_" + band][msksel])
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:1975: RuntimeWarning: invalid value encountered in log10
+  - 2.5 * np.log10(mydict["FLUX_" + band][msksel])
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:700: RuntimeWarning: invalid value encountered in true_divide
+  np.array(cs) / np.array(cps).astype(float),
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2013: RuntimeWarning: invalid value encountered in log10
+  * np.log10(
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2021: RuntimeWarning: invalid value encountered in log10
+  * np.log10(
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2030: RuntimeWarning: invalid value encountered in true_divide
+  mydict["FLUX_{}".format(xbands[0])]
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2038: RuntimeWarning: invalid value encountered in true_divide
+  mydict["FLUX_{}".format(ybands[0])]
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2037: RuntimeWarning: invalid value encountered in log10
+  * np.log10(
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2077: RuntimeWarning: divide by zero encountered in true_divide
+  np.clip(((tmpc / tmpcp) - famin) / (famax - famin), 0, 1)
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2077: RuntimeWarning: invalid value encountered in true_divide
+  np.clip(((tmpc / tmpcp) - famin) / (famax - famin), 0, 1)
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2038: RuntimeWarning: divide by zero encountered in true_divide
+  mydict["FLUX_{}".format(ybands[0])]
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2117: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  ax = plt.subplot(gs[ix, 4])
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2163: RuntimeWarning: invalid value encountered in true_divide
+  c = (hb.get_array() / hbp.get_array()) / len(tileids)
+SV1_SCND_TARGET ISM_CGM_QGP:	assgn / parent = 44 / 69
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:1975: RuntimeWarning: divide by zero encountered in log10
+  - 2.5 * np.log10(mydict["FLUX_" + band][msksel])
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:700: RuntimeWarning: invalid value encountered in true_divide
+  np.array(cs) / np.array(cps).astype(float),
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2013: RuntimeWarning: invalid value encountered in log10
+  * np.log10(
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2021: RuntimeWarning: invalid value encountered in log10
+  * np.log10(
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2030: RuntimeWarning: invalid value encountered in true_divide
+  mydict["FLUX_{}".format(xbands[0])]
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2038: RuntimeWarning: invalid value encountered in true_divide
+  mydict["FLUX_{}".format(ybands[0])]
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2037: RuntimeWarning: invalid value encountered in log10
+  * np.log10(
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2077: RuntimeWarning: invalid value encountered in true_divide
+  np.clip(((tmpc / tmpcp) - famin) / (famax - famin), 0, 1)
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2038: RuntimeWarning: divide by zero encountered in true_divide
+  mydict["FLUX_{}".format(ybands[0])]
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2117: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  ax = plt.subplot(gs[ix, 4])
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2163: RuntimeWarning: invalid value encountered in true_divide
+  c = (hb.get_array() / hbp.get_array()) / len(tileids)
+SV1_SCND_TARGET HSC_HIZ_SNE:	assgn / parent = 43 / 965
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:1975: RuntimeWarning: divide by zero encountered in log10
+  - 2.5 * np.log10(mydict["FLUX_" + band][msksel])
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:700: RuntimeWarning: invalid value encountered in true_divide
+  np.array(cs) / np.array(cps).astype(float),
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2013: RuntimeWarning: invalid value encountered in log10
+  * np.log10(
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2021: RuntimeWarning: invalid value encountered in log10
+  * np.log10(
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2030: RuntimeWarning: invalid value encountered in true_divide
+  mydict["FLUX_{}".format(xbands[0])]
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2038: RuntimeWarning: invalid value encountered in true_divide
+  mydict["FLUX_{}".format(ybands[0])]
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2037: RuntimeWarning: invalid value encountered in log10
+  * np.log10(
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2077: RuntimeWarning: invalid value encountered in true_divide
+  np.clip(((tmpc / tmpcp) - famin) / (famax - famin), 0, 1)
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2038: RuntimeWarning: divide by zero encountered in true_divide
+  mydict["FLUX_{}".format(ybands[0])]
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2117: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  ax = plt.subplot(gs[ix, 4])
+/global/homes/m/mjwilson/DESILBG/fiberassign/bin/fba_sv1:2163: RuntimeWarning: invalid value encountered in true_divide
+  c = (hb.get_array() / hbp.get_array()) / len(tileids)

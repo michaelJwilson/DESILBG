@@ -7,8 +7,8 @@ from   astropy.coordinates import SkyCoord
 from   astropy.table       import Table
 from   astropy             import units as u
 
-
-tomog = '/global/cscratch1/sd/mjwilson/secondary/sv1/indata/LBG_TOMOG.fits'
+# /global/cscratch1/sd/mjwilson/secondary/sv1/backup/indata/LBG_TOMOG.fits
+tomog = '/global/cscratch1/sd/mjwilson/secondary/sv1/backup/indata/LBG_TOMOG.fits'
 dat   = Table.read(tomog)
 
 # Cut to COSMOS. 
@@ -54,8 +54,9 @@ matches         = matches[matches['SEP'] < 0.1]
 # matches.pprint()
 # dat.pprint()
 
+##  --- Majority are surrounding, older u* footprint ---
 unmatched       = dat[d2d.arcsec > 1.0]
-unmatched.pprint()
+# unmatched.pprint()
 
 gmr             = unmatched['G'] - unmatched['R']                                                                                                                                             
 umg             = unmatched['U'] - unmatched['G']  
@@ -71,7 +72,9 @@ umg             = unmatched['U'] - unmatched['G']
 # pl.hist(unmatched['PHOTO_Z'], bins=100)                                                                                                                                                                 
 # pl.show() 
 
-pl.plot(unmatched['RA'], unmatched['DEC'], marker='.', lw=0.0, c='b', markersize=1)
-# pl.xlim(-1., 3.0)                                                                                                                                                                                                        
+# pl.plot(unmatched['RA'], unmatched['DEC'], marker='.', lw=0.0, c='b', markersize=1)
+# pl.xlim(-1., 3.0)                                                                                                                                                                                                     
 # pl.ylim(-1., 4.5)                                                                                                                                                                                                          
-pl.show()
+# pl.show()
+
+# frame_J2015   = SkyCoord(ra=1.0, dec=2.0, unit='deg', frame='icrs', equinox='J1978.0')
