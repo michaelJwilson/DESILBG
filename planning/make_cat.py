@@ -43,9 +43,14 @@ for band in ['u', 'uS', 'g', 'r', 'i', 'z', 'y', 'Yv', 'J', 'H', 'Ks']:
 cat.sort('PRIORITY')
 
 # Append tomog.
-tomog = '/global/cscratch1/sd/mjwilson/secondary/sv1/backup/indata/LBG_TOMOG.fits'
+tomog = '/global/cscratch1/sd/mjwilson/DESILBG/tomog/tomog.fits'
 dat   = Table.read(tomog)
 dat['SAMPLE'] = 'CLAUDS-TMG'
+
+# Remove overlap
+overlap = np.isin(cat['ID'], dat['ID'])
+
+cat   = cat[~overlap]
 
 cat   = vstack((cat, dat))
 
