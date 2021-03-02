@@ -1,0 +1,68 @@
+# 133.201 DARK HRS * ~ 0.5 ALTITUDE FRAC * 0.8 AIRMASS FRAC. 
+Minimum latitude: 30.0000
+Assuming 96 samples of interval 0.250000 hrs
+Solving for 30 nights.
+	Warning:  proceeding assuming custom tiles file.
+
+2021-04-01	19:54:31.751	05:04:57.784:	 3.845 Dark	 0.000	Gray	 5.329	Bright (0.73% illumination).
+	Good altitude: 61.11%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 81.82%
+2021-04-02	19:55:18.983	05:03:35.334:	 4.948 Dark	 0.000	Gray	 4.189	Bright (0.63% illumination).
+	Good altitude: 58.33%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 80.95%
+2021-04-03	19:56:06.525	05:02:12.918:	 5.948 Dark	 3.153	Gray	 0.000	Bright (0.52% illumination).
+	Good altitude: 58.33%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 80.95%
+2021-04-04	19:56:54.385	05:00:50.568:	 6.820 Dark	 2.246	Gray	 0.000	Bright (0.41% illumination).
+	Good altitude: 58.33%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 80.95%
+2021-04-05	19:57:42.569	04:59:28.312:	 7.564 Dark	 1.466	Gray	 0.000	Bright (0.31% illumination).
+	Good altitude: 58.33%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 80.95%
+2021-04-06	19:58:31.081	04:58:06.180:	 8.198 Dark	 0.795	Gray	 0.000	Bright (0.21% illumination).
+	Good altitude: 55.56%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 80.00%
+2021-04-07	19:59:19.921	04:56:44.201:	 8.750 Dark	 0.207	Gray	 0.000	Bright (0.14% illumination).
+	Good altitude: 55.56%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 80.00%
+2021-04-08	20:00:09.094	04:55:22.402:	 8.920 Dark	 0.000	Gray	 0.000	Bright (0.08% illumination).
+	Good altitude: 57.14%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 80.00%
+2021-04-09	20:00:58.597	04:54:00.814:	 8.884 Dark	 0.000	Gray	 0.000	Bright (0.03% illumination).
+	Good altitude: 57.14%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 80.00%
+2021-04-10	20:01:48.430	04:52:39.466:	 8.848 Dark	 0.000	Gray	 0.000	Bright (0.01% illumination).
+	Good altitude: 54.29%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 78.95%
+2021-04-11	20:02:38.592	04:51:18.384:	 8.811 Dark	 0.000	Gray	 0.000	Bright (0.00% illumination).
+	Good altitude: 54.29%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 78.95%
+2021-04-12	20:03:29.081	04:49:57.601:	 8.775 Dark	 0.000	Gray	 0.000	Bright (0.01% illumination).
+	Good altitude: 54.29%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 78.95%
+2021-04-13	20:04:19.893	04:48:37.145:	 8.302 Dark	 0.437	Gray	 0.000	Bright (0.04% illumination).
+	Good altitude: 54.29%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 78.95%
+2021-04-14	20:05:11.025	04:47:17.047:	 7.354 Dark	 1.348	Gray	 0.000	Bright (0.09% illumination).
+	Good altitude: 50.00%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 76.47%
+2021-04-15	20:06:02.470	04:45:57.337:	 6.401 Dark	 2.264	Gray	 0.000	Bright (0.15% illumination).
+	Good altitude: 50.00%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 76.47%
+2021-04-16	20:06:54.225	04:44:38.046:	 5.454 Dark	 3.175	Gray	 0.000	Bright (0.22% illumination).
+	Good altitude: 50.00%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 76.47%
+2021-04-17	20:07:46.281	04:43:19.205:	 4.533 Dark	 4.060	Gray	 0.000	Bright (0.31% illumination).
+	Good altitude: 50.00%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 76.47%
+2021-04-18	20:08:38.631	04:42:00.847:	 3.659 Dark	 4.897	Gray	 0.000	Bright (0.40% illumination).
+	Good altitude: 47.06%;  (Conditional) Good lunar separation: 0.00%;  (Conditional) Good airmass: nan%
+2021-04-19	20:09:31.266	04:40:43.004:	 2.848 Dark	 5.126	Gray	 0.545	Bright (0.50% illumination).
+	Good altitude: 47.06%;  (Conditional) Good lunar separation: 0.00%;  (Conditional) Good airmass: nan%
+2021-04-20	20:10:24.178	04:39:25.708:	 2.107 Dark	 0.807	Gray	 5.570	Bright (0.60% illumination).
+	Good altitude: 48.48%;  (Conditional) Good lunar separation: 0.00%;  (Conditional) Good airmass: nan%
+2021-04-21	20:11:17.359	04:38:08.995:	 1.430 Dark	 0.000	Gray	 7.018	Bright (0.71% illumination).
+	Good altitude: 48.48%;  (Conditional) Good lunar separation: 0.00%;  (Conditional) Good airmass: nan%
+2021-04-22	20:12:10.800	04:36:52.898:	 0.802 Dark	 0.000	Gray	 7.610	Bright (0.80% illumination).
+	Good altitude: 45.45%;  (Conditional) Good lunar separation: 0.00%;  (Conditional) Good airmass: nan%
+2021-04-23	FULLMOON
+2021-04-24	FULLMOON
+2021-04-25	FULLMOON
+2021-04-26	FULLMOON
+2021-04-27	FULLMOON
+2021-04-28	FULLMOON
+2021-04-29	FULLMOON
+2021-04-30	20:19:26.734	04:27:10.680:	 3.397 Dark	 0.000	Gray	 4.731	Bright (0.77% illumination).
+	Good altitude: 39.39%;  (Conditional) Good lunar separation: 100.00%;  (Conditional) Good airmass: 69.23%
+
+
+
+TILEID         RA                DEC          APRIL [3]  
+------ ------------------ ----------------- -------------
+     0 150.14450146420253 2.234834618333211 56.75 .. 0.75
+
+
+Done in 21.43 seconds.

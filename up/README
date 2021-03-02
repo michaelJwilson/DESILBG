@@ -1,0 +1,22 @@
+source /project/projectdirs/desi/software/desi_environment.sh master
+
+git clone https://github.com/michaelJwilson/bgscmxsv.git
+
+# Set bash function. 
+function addrepo(){
+  module unload $1
+
+  export PATH="$PWD"/$1/bin/:$PATH
+  export PYTHONPATH="$PWD"/$1:"$PWD"/$1/py/:$PYTHONPATH
+}
+
+addrepo bgscmxsv
+
+cd bgscmxsv/bin
+
+up --help
+
+# Shallow=1 is faster, but does not write results to disk at outdir.
+# up --tiles /global/cscratch1/sd/mjwilson/clauds/tiles.fits --bright 0 --firstday 20210301 --lastday 20210601 --twilight 0 --outdir /global/cscratch1/sd/mjwilson/trash/ChY --numproc 4 --airmass 1.5 --shallow 0
+
+up --tiles /global/cscratch1/sd/mjwilson/clauds/cosmos.fits --bright 0 --firstday 20210301 --lastday 20210601 --twilight 0 --outdir /global/cscratch1/sd/mjwilson/trash/ChY --numproc 4 --airmass 1.5 --shallow 1 --verbose 1

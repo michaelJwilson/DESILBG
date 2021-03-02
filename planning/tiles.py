@@ -55,4 +55,8 @@ cat.pprint()
 
 # pl.show()
 
-cat.write(scr + '/clauds/tiles.fits', format='fits', overwrite=True)
+# cat.write(scr + '/clauds/tiles.fits', format='fits', overwrite=True)
+
+cosmos = cat[cat['FIELD'] == 'COSMOS']
+cosmos.write(scr + '/clauds/cosmos.fits', format='fits', overwrite=True)
+
