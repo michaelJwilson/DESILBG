@@ -2,12 +2,13 @@ import glob
 import pandas as pd
 import numpy as np
 import healpy as hp
+import astropy.io.fits as fits
 
 from   desitarget.geomask import is_in_hp
 from   astropy.table import Table, vstack
 
 
-root  = '/global/cscratch1/sd/mjwilson/DESILBG/Feb21/targets/' 
+root  = '/global/cscratch1/sd/mjwilson/DESILBG/Mar21/targets/' 
 cat   = None
 
 # Keep restricted column list. 
@@ -22,41 +23,66 @@ for tracer in ['bxdrops', 'udrops', 'gdrops']:
     print('{} files to be collected.'.format(len(files)))
     
     for f in files:
+        toexclude = f.split('-')[1][0]
+
+        if toexclude == 'm':
+            print('Skipping {}'.format(f))
+        
         if cat is None:
             cat = Table.read(f)[cols]
 
         else:
             cat = vstack((cat, Table.read(f)[cols])) 
             
-print('Collected {}M LBGLAE targets.'.format(len(cat) / 1.e6))
+print('Collected {}K LBGLAE targets.'.format(len(cat) / 1.e3))
 
 cat['OVERRIDE'] = cat['OVERRIDE'].data.astype(bool)
 
-# Patch bands:
-for band in ['u', 'uS', 'g', 'r', 'i', 'z', 'y', 'Yv', 'J', 'H', 'Ks']:
-    cat[band.upper()] = cat[band]
-    cat[band.upper() + '_ERR'] = cat[band + '_err']
-    
-    del cat[band]
-    del cat[band + '_err']
-
-cat.sort('PRIORITY')
-
 # Append tomog.
 tomog = '/global/cscratch1/sd/mjwilson/DESILBG/tomog/tomog.fits'
-dat   = Table.read(tomog)
+dat = Table.read(tomog)
 dat['SAMPLE'] = 'CLAUDS-TMG'
 dat['PMRA']   = 0.0
 dat['PMDEC']  = 0.0
 
+print('Collected {}K TMG targets.'.format(len(dat) / 1.e3))
+
 # Remove overlap
-overlap = np.isin(cat['ID'], dat['ID'])
+overlap  = np.isin(cat['ID'], dat['ID'])
+# doverlap = np.isin(dat['ID'], cat['ID']) 
+
+types = np.unique(cat['SAMPLE'])
+
+for tt in types:
+    istype = cat['SAMPLE'] == tt
+
+    istypeoverlap = istype & overlap
+
+    print(tt, np.count_nonzero(istype), np.count_nonzero(istypeoverlap))
+    
+# cat.sort('ID')
+# dat.sort('ID')
+
+# cat[overlap].pprint()
+# dat[doverlap].pprint()
 
 cat   = cat[~overlap]
 
-cat   = vstack((cat, dat))
+cat.sort('PRIORITY')
 
-opath = '/global/cscratch1/sd/mjwilson/secondary/sv1/raw/LBG_TOMOG.fits'
+cat   = vstack((dat, cat))
+
+print('Total candidates: {}k'.format(len(cat) / 1.e3))
+
+# Patch bands:                                                                                                                                                         
+for band in ['u', 'uS', 'g', 'r', 'i', 'z', 'y', 'Yv', 'J', 'H', 'Ks']:
+    cat[band.upper()] = cat[band]
+    cat[band.upper() + '_ERR'] = cat[band + '_err']
+
+    del cat[band]
+    del cat[band + '_err']
+
+opath = '/global/cscratch1/sd/mjwilson/secondary/sv1/raw/Mar21/LBG_TOMOG.fits'
 cat.write(opath, format='fits', overwrite=True)
 
 # [('RA', '>f8'), ('DEC', '>f8'), ('PMRA', '>f4'), ('PMDEC', '>f4'), ('REF_EPOCH', '>f4'), ('OVERRIDE', '?')]
@@ -86,3 +112,7 @@ cat.write(opath, format='fits', overwrite=True)
 # pixnums    = np.unique(pixnums)
 # 
 # print(pixnums)
+
+dat = fits.open('/global/cfs/cdirs/desi/target/secondary/sv1/indata/LBG_TOMOG.fits')                                                                                                            
+
+print('Currently in official secondary dir.: {}k'.format(len(dat[1].data) / 1.e3))
