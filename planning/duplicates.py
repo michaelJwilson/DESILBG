@@ -1,7 +1,7 @@
 import numpy as np
 import astropy.io.fits as fits
 
-from astropy.table import Table, vstack
+from   astropy.table import Table, vstack
 
 
 # Made by make_cat; sorted highest priority first. 
