@@ -94,6 +94,19 @@ for band in ['u', 'uS', 'g', 'r', 'i', 'z', 'y', 'Yv', 'J', 'H', 'Ks']:
     del cat[band]
     del cat[band + '_err']
 
+# Exclude bright objects.
+for band in ['U', 'G', 'R', 'I']:
+    # Defined magnitudes 
+    isin = cat[band] > -99.
+
+    exclude = isin & (cat[band] < 19.)
+
+    print(band, 'Excluding: ', np.count_nonzero(exclude))
+
+    cat = cat[~exclude]
+
+cat.pprint()
+    
 opath = '/global/cscratch1/sd/mjwilson/secondary/sv1/raw/Mar21/LBG_LBGLAE.fits'
 cat.write(opath, format='fits', overwrite=True)
 
