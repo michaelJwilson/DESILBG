@@ -4,8 +4,8 @@ import numpy as np
 import healpy as hp
 import astropy.io.fits as fits
 
-from   desitarget.geomask import is_in_hp
-from   astropy.table import Table, vstack
+from desitarget.geomask import is_in_hp
+from astropy.table import Table, vstack
 
 
 root  = '/global/cscratch1/sd/mjwilson/DESILBG/Mar21/targets/' 
@@ -24,9 +24,11 @@ for tracer in ['bxdrops', 'udrops', 'gdrops']:
     
     for f in files:
         toexclude = f.split('-')[1][0]
-
+        
         if toexclude == 'm':
             print('Skipping {}'.format(f))
+
+            continue
         
         if cat is None:
             cat = Table.read(f)[cols]
@@ -37,7 +39,7 @@ for tracer in ['bxdrops', 'udrops', 'gdrops']:
 print('Collected {}K LBGLAE targets.'.format(len(cat) / 1.e3))
 
 cat['OVERRIDE'] = cat['OVERRIDE'].data.astype(bool)
-
+'''
 # Append tomog.
 tomog = '/global/cscratch1/sd/mjwilson/DESILBG/tomog/tomog.fits'
 dat = Table.read(tomog)
@@ -67,13 +69,16 @@ for tt in types:
 # dat[doverlap].pprint()
 
 cat   = cat[~overlap]
-
+'''
 cat.sort('PRIORITY')
 
-cat   = vstack((dat, cat))
+# cat   = vstack((dat, cat))
 
 print('Total candidates: {}k'.format(len(cat) / 1.e3))
 
+for band in ['u', 'uS', 'g', 'r']:
+    print(band, np.sort(cat[band].data))
+    
 # Patch bands:                                                                                                                                                         
 for band in ['u', 'uS', 'g', 'r', 'i', 'z', 'y', 'Yv', 'J', 'H', 'Ks']:
     cat[band.upper()] = cat[band]
@@ -82,9 +87,9 @@ for band in ['u', 'uS', 'g', 'r', 'i', 'z', 'y', 'Yv', 'J', 'H', 'Ks']:
     del cat[band]
     del cat[band + '_err']
 
-opath = '/global/cscratch1/sd/mjwilson/secondary/sv1/raw/Mar21/LBG_TOMOG.fits'
+opath = '/global/cscratch1/sd/mjwilson/secondary/sv1/raw/Mar21/LBG_LBGLAE.fits'
 cat.write(opath, format='fits', overwrite=True)
-
+'''
 # [('RA', '>f8'), ('DEC', '>f8'), ('PMRA', '>f4'), ('PMDEC', '>f4'), ('REF_EPOCH', '>f4'), ('OVERRIDE', '?')]
 cat = cat['RA', 'DEC', 'PMRA', 'PMDEC', 'REF_EPOCH', 'OVERRIDE']
 
@@ -98,7 +103,7 @@ cat['PMDEC'] = cat['PMDEC'].data.astype('>f4')
 cat['REF_EPOCH'] = np.array([0.0] * len(cat), dtype='>f4')
 cat['OVERRIDE'] = False
 
-opath = '/global/cscratch1/sd/mjwilson/secondary/sv1/indata/LBG_TOMOG.fits'
+opath = '/global/cscratch1/sd/mjwilson/secondary/sv1/indata/LBG_LBGLAE.fits'
 
 print('Writing to {}.'.format(opath))
 
@@ -116,3 +121,4 @@ cat.write(opath, format='fits', overwrite=True)
 dat = fits.open('/global/cfs/cdirs/desi/target/secondary/sv1/indata/LBG_TOMOG.fits')                                                                                                            
 
 print('Currently in official secondary dir.: {}k'.format(len(dat[1].data) / 1.e3))
+'''
