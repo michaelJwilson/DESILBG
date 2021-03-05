@@ -24,10 +24,10 @@ for tracer in ['bxdrops', 'udrops', 'gdrops']:
     
     for f in files:
         toexclude = f.split('-')[1][0]
-        
+
+        # Skip minus priorities (objects lost as a fixed number of objects per priority class kept).
         if toexclude == 'm':
             print('Skipping {}'.format(f))
-
             continue
         
         if cat is None:
@@ -40,6 +40,7 @@ print('Collected {}K LBGLAE targets.'.format(len(cat) / 1.e3))
 
 cat['OVERRIDE'] = cat['OVERRIDE'].data.astype(bool)
 '''
+# Deprecated:  Now handled by duplicates.
 # Append tomog.
 tomog = '/global/cscratch1/sd/mjwilson/DESILBG/tomog/tomog.fits'
 dat = Table.read(tomog)
@@ -70,7 +71,13 @@ for tt in types:
 
 cat   = cat[~overlap]
 '''
+
 cat.sort('PRIORITY')
+
+# Reverse: highest priority first.
+cat = cat[::-1]
+
+cat.pprint()
 
 # cat   = vstack((dat, cat))
 
@@ -89,7 +96,10 @@ for band in ['u', 'uS', 'g', 'r', 'i', 'z', 'y', 'Yv', 'J', 'H', 'Ks']:
 
 opath = '/global/cscratch1/sd/mjwilson/secondary/sv1/raw/Mar21/LBG_LBGLAE.fits'
 cat.write(opath, format='fits', overwrite=True)
+
 '''
+# Deprecated: now handled by duplicates.py
+# 
 # [('RA', '>f8'), ('DEC', '>f8'), ('PMRA', '>f4'), ('PMDEC', '>f4'), ('REF_EPOCH', '>f4'), ('OVERRIDE', '?')]
 cat = cat['RA', 'DEC', 'PMRA', 'PMDEC', 'REF_EPOCH', 'OVERRIDE']
 
