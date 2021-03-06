@@ -1,0 +1,8 @@
+Generate LBGLAE targets with desilbg-clauds-v9.ipynb.
+
+Run make_cat.py to collect and turn into the necessry file.
+
+Use master-comp.ipynb to find the duplicates with the catalog
+provided by Christophe.
+
+Use duplicates.py to make the final catalog. 
