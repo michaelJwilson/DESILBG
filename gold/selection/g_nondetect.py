@@ -2,6 +2,7 @@ import numpy as np
 
 def g_nondetect(clauds):
     '''
+    ug non detections. 
     '''
 
     # 'Detection' band. 
@@ -12,7 +13,7 @@ def g_nondetect(clauds):
     # Check these targets have g available.
     assert  np.all(clauds['FLAG_FIELD_BINARY'][:,0] == True)
 
-    # Non-detected in g and u: u ~-99.
+    # Non-detected in u and g: u ~-99.
     isin = (clauds['u'] < -40.)
     isin = isin & (clauds['g'] < -40.)
 
@@ -28,7 +29,7 @@ def g_nondetect(clauds):
     
     isin = isin & (clauds[band] < maglim)
     isin = isin & (clauds[band] > magmin)
-        
+    
     return  isin
 
 

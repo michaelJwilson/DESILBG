@@ -3,6 +3,10 @@ import numpy as np
 from .udrops import udrops
 
 def bx(cat):
+    '''
+    bx color selection.
+    '''
+    
     rmin=20.0
     rmax=24.5
 
@@ -25,9 +29,10 @@ def bx(cat):
     isin = isin & (cat['r'] > rmin)
     isin = isin & (cat['r'] < rmax)
     
+    # Not a u dropout.
     isin = isin & (~udrops(cat))
 
-    # Catch -99 for ill defined magnitudes. **  Deal with non-detections independently **.
+    # Catch -99 for ill defined magnitudes. **  Deal with u non-detections independently **.
     isin = isin & (cat['u'] > 0.0)
     isin = isin & (cat['g'] > 0.0)
     isin = isin & (cat['r'] > 0.0)

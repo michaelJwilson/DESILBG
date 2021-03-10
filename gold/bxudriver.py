@@ -53,6 +53,7 @@ cat = cat[isin]
 print('COSMOS catalog has {} sources meeting BX | u | u nondetect selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_uarea))
 
 ##  --- Prioritization ---
+##  Implemented, to be applied.
 
 # Keep column list.                                                                                                                                                                                                             
 cols  = pd.read_csv('cols.txt', names=['names']).names
