@@ -85,21 +85,28 @@ def uniform_magpriority(band, magmin, magmax, cat):
 if __name__ == '__main__':
     import pylab as pl
 
+    # band  ='r'
+    # title ='BX/U/NONDETECT'
+    # fpath = '/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits'
+
+    band = 'i'
+    title ='G/NONDETECT'
+    fpath = '/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/g.fits'
     
-    dat = Table.read('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/g.fits')
+    dat = Table.read(fpath)
     dat.pprint()
 
-    dat = uniform_magpriority('i', 20.0, 25.5, dat)
-
+    dat = uniform_magpriority(band, 20.0, 25.5, dat)
     dat.pprint()
     
     idx = 1 + np.arange(len(dat))
 
-    pl.scatter(idx, dat['i'], c=dat['IDX'], marker='.', lw=0.0, s=5)
+    pl.scatter(idx, dat[band], c=dat['IDX'], marker='.', lw=0.0, s=5)
     pl.xlabel('ROW (PRIORITY)')
-    pl.ylabel('i')    
+    pl.ylabel(band)    
     pl.xlim(0.9, 25000)
     pl.xscale('log')
     pl.colorbar()
+    pl.title(title)
     pl.show()
     
