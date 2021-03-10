@@ -12,7 +12,7 @@ from datamodel import datamodel
 # Safeguard, but should be unncessary. 
 np.random.seed(seed=314)
 
-# Area in u-band (approx); [sq. deg.]
+# Area in g band (approx); [sq. deg.]
 cosmos_garea = 7.84
 
 # Load latest clauds catalog.
@@ -20,16 +20,17 @@ cat = Table.read('/global/cscratch1/sd/mjwilson/clauds/March2021/COSMOS_v9_v2102
 
 print('Latest COSMOS catalog has {} sources.'.format(len(cat)))
 
-# Limit to uband area.
+# Limit to no stellar mask. 
 cat = cat[cat['MASK'] == 0]
 
 print('After stellar masking, COSMOS catalog has {} sources.'.format(len(cat)))
 
-# Limit to the u imaging footprint. Table A1 of https://www.overleaf.com/read/wdtmwbwvnjgc.
+# Limit to the hsc imaging footprint. Table A1 of https://www.overleaf.com/read/wdtmwbwvnjgc.
 cat = cat[cat['FLAG_FIELD_BINARY'][:,0] == True]
 
 print('After limiting to the g imaging, COSMOS catalog has {} sources.'.format(len(cat)))
 
+# Fainter than 17th mag in ugrizy. 
 isin = not_bright(cat)
 
 cat = cat[isin]
@@ -50,8 +51,9 @@ print('COSMOS catalog has {} sources meeting g | g nondetect selection at a targ
 
 ##  --- Prioritization ---                                                                                                                                                                                                                    
 ##  Implemented, to be applied. 
+##  See  uniform_magprior.py
 
-# Keep column list.                                                                                                                                                                                                             
+# clauds-like data model.                                                                                                                                                                                                             
 cols  = pd.read_csv('cols.txt', names=['names']).names
 cols  = cols.tolist()
 
@@ -61,6 +63,7 @@ cat.pprint()
 
 cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/g.fits', format='fits', overwrite=True)
 
+# ADM-like data model. 
 cat = datamodel(cat)
 
 cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/scnd_g.fits', format='fits', overwrite=True)

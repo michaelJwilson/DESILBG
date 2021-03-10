@@ -19,7 +19,7 @@ cat = Table.read('/global/cscratch1/sd/mjwilson/clauds/March2021/COSMOS_v9_v2102
 
 print('Latest COSMOS catalog has {} sources.'.format(len(cat)))
 
-# Limit to uband area.
+# Limit to no stellar mask. 
 cat = cat[cat['MASK'] == 0]
 
 print('After stellar masking, COSMOS catalog has {} sources.'.format(len(cat)))
@@ -29,6 +29,7 @@ cat = cat[cat['FLAG_FIELD_BINARY'][:,1] == True]
 
 print('After limiting to the u imaging, COSMOS catalog has {} sources.'.format(len(cat)))
 
+# Less than 17th mag in ugrizy. 
 isin = not_bright(cat)
 
 cat = cat[isin]
@@ -41,10 +42,10 @@ cat = cat[is_tomog]
 
 print('COSMOS catalog has {} sources meeting TMG selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_uarea))
 
-# Prioritize by r.
+# Prioritize by r; brightest first. 
 cat.sort('r')
 
-# Keep column list.                                                                                                                                                                                                             
+# clauds-like datamodel.                                                                                                                                                                                                             
 cols  = pd.read_csv('cols.txt', names=['names']).names
 cols  = cols.tolist()
 
@@ -54,7 +55,7 @@ cat.pprint()
 
 cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/TMGV9/tmg_v9.fits', format='fits', overwrite=True)
 
-##  Prioritization scheme for BX | U selection.
+##  ADM-like datamodel.
 cat = datamodel(cat)
 
 cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/TMGV9/scnd_tmg_v9.fits', format='fits', overwrite=True)
