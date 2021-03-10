@@ -18,11 +18,11 @@ def u_nondetect(clauds):
     isin = clauds['u'] < -40.
 
     # SNR cuts in g and r.
-    isin = clauds['g_err'] <= 0.1
-    isin = clauds['r_err'] <= 0.2
+    isin = isin & (clauds['g_err'] <= 0.1)
+    isin = isin & (clauds['r_err'] <= 0.2)
 
     # Same as u drops.
-    isin = clauds['g'] - clauds['r'] < 1.2
+    isin = isin & (clauds['g'] - clauds['r'] < 1.2)
     
     isin = isin & (clauds[band] < maglim)
     isin = isin & (clauds[band] > magmin)

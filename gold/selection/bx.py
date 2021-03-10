@@ -16,11 +16,11 @@ def bx(cat):
     gmr = cat['g'] - cat['r']
 
     # LATIS, https://arxiv.org/pdf/2002.10676.pdf
-    isin &= umg >  0.0
-    isin &= umg <  3.0
-    isin &= gmr > -0.5
-    isin &= gmr <  1.0
-    isin &= umg >  1.0 + 2.3 * (gmr - 0.35)
+    isin &= (umg >  0.0)
+    isin &= (umg <  3.0)
+    isin &= (gmr > -0.5)
+    isin &= (gmr <  1.0)
+    isin &= (umg >  1.0 + 2.3 * (gmr - 0.35))
 
     isin = isin & (cat['r'] > rmin)
     isin = isin & (cat['r'] < rmax)
@@ -31,7 +31,7 @@ def bx(cat):
     isin = isin & (cat['u'] > 0.0)
 
     # SNR cuts in g and r.                                                                                                                                                                                                                  
-    isin = clauds['g_err'] <= 0.1
-    isin = clauds['r_err'] <= 0.2
+    isin = isin & (cat['g_err'] <= 0.1)
+    isin = isin & (cat['r_err'] <= 0.2)
     
     return  isin

@@ -6,6 +6,7 @@ from not_bright import not_bright
 
 from selection.udrops import udrops
 from selection.bx import bx
+from selection.u_nondetect import u_nondetect
 
 from datamodel import datamodel
 
@@ -38,18 +39,23 @@ print('After removing bright sources, COSMOS catalog has {} sources.'.format(len
 
 is_bx = bx(cat)
 is_udrop = udrops(cat)
+is_unondetect = u_nondetect(cat)
 
-isin = is_bx | is_udrop
+print('With BX selection, COSMOS catalog has {} sources.'.format(np.count_nonzero(is_bx)))
+print('With u selection, COSMOS catalog has {} sources.'.format(np.count_nonzero(is_udrop)))
+print('With u-nondetect selection, COSMOS catalog has {} sources.'.format(np.count_nonzero(is_unondetect)))
+
+isin = is_bx | is_udrop | is_unondetect
 
 cat = cat[isin]
 
-print('COSMOS catalog has {} sources meeting BX | u selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_uarea))
+print('COSMOS catalog has {} sources meeting BX | u | u nondetect selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_uarea))
 
 # Keep column list.                                                                                                                                                                                                             
 cols  = pd.read_csv('cols.txt', names=['names']).names
 cols  = cols.tolist()
 
-cat = cat[cols]
+cat   = cat[cols]
 
 cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits', format='fits', overwrite=True)
 

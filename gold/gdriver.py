@@ -5,6 +5,7 @@ from astropy.table import Table
 from not_bright import not_bright
 
 from selection.gdrops import gdrops
+from selection.g_nondetect import g_nondetect
 
 from datamodel import datamodel
 
@@ -37,10 +38,16 @@ cat = cat[isin]
 print('After removing bright sources, COSMOS catalog has {} sources.'.format(len(cat)))
 
 is_gdrop = gdrops(cat)
+is_gnondetect = g_nondetect(cat)
 
-cat = cat[is_gdrop]
+print('With g selection, COSMOS catalog has {} sources.'.format(np.count_nonzero(is_gdrop)))
+print('With g-nondetect selection, COSMOS catalog has {} sources.'.format(np.count_nonzero(is_gnondetect)))
 
-print('COSMOS catalog has {} sources meeting g selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / (cosmos_garea - cosmos_uarea)))
+isin = is_gdrop | is_gnondetect
+
+cat = cat[isin]
+
+print('COSMOS catalog has {} sources meeting g | g nondetect selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / (cosmos_garea - cosmos_uarea)))
 
 # Keep column list.                                                                                                                                                                                                             
 cols  = pd.read_csv('cols.txt', names=['names']).names

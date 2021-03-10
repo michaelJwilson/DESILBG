@@ -26,7 +26,7 @@ def udrops(clauds):
     isin = isin & (clauds['u'] > 0.0)
 
     # SNR cuts in g and r.                                                                                                                                                                                                                  
-    isin = clauds['g_err'] <= 0.1
-    isin = clauds['r_err'] <= 0.2
+    isin = isin & (clauds['g_err'] <= 0.1)
+    isin = isin & (clauds['r_err'] <= 0.2)
     
     return  isin
