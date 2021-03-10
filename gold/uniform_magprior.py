@@ -85,13 +85,13 @@ def uniform_magpriority(band, magmin, magmax, cat):
 if __name__ == '__main__':
     import pylab as pl
 
-    # band  ='r'
-    # title ='BX/U/NONDETECT'
-    # fpath = '/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits'
+    band  ='r'
+    title ='BX/U/NONDETECT'
+    fpath = '/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits'
 
-    band = 'i'
-    title ='G/NONDETECT'
-    fpath = '/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/g.fits'
+    # band = 'i'
+    # title ='G/NONDETECT'
+    # fpath = '/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/g.fits'
     
     dat = Table.read(fpath)
     dat.pprint()
@@ -108,5 +108,7 @@ if __name__ == '__main__':
     pl.xscale('log')
     pl.colorbar()
     pl.title(title)
-    pl.show()
+    # pl.show()
+
+    pl.savefig('unimag_{}.pdf'.format(band))
     
