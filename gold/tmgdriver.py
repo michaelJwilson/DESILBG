@@ -4,8 +4,7 @@ import pandas as pd
 from astropy.table import Table
 from not_bright import not_bright
 
-from selection.udrops import udrops
-from selection.bx import bx
+from selection.tomog import tomog
 
 from datamodel import datamodel
 
@@ -36,14 +35,11 @@ cat = cat[isin]
 
 print('After removing bright sources, COSMOS catalog has {} sources.'.format(len(cat)))
 
-is_bx = bx(cat)
-is_udrop = udrops(cat)
+is_tomog = tomog(cat)
 
-isin = is_bx | is_udrop
+cat = cat[is_tomog]
 
-cat = cat[isin]
-
-print('COSMOS catalog has {} sources meeting BX | u selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_uarea))
+print('COSMOS catalog has {} sources meeting TMG selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_uarea))
 
 # Keep column list.                                                                                                                                                                                                             
 cols  = pd.read_csv('cols.txt', names=['names']).names
@@ -51,11 +47,9 @@ cols  = cols.tolist()
 
 cat = cat[cols]
 
-cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits', format='fits', overwrite=True)
+cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/TMGV9/tmg_v9.fits', format='fits', overwrite=True)
 
 ##  Prioritization scheme for BX | U selection.
 cat = datamodel(cat)
 
-cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/scnd_bxu.fits', format='fits', overwrite=True)
-
-print('Writing to {}.'.format('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits'))
+cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/TMGV9/scnd_tmg_v9.fits', format='fits', overwrite=True)

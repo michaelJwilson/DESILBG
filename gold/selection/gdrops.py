@@ -1,8 +1,11 @@
-def gdrop(cat):
-    # Check these targets have u band imaging available.                                                                                                                                                                                     
-    assert  np.all(clauds['FLAG_FIELD_BINARY'][:,0] == True)
+import numpy as np
 
-    imin=17.0
+
+def gdrops(cat):
+    # Check these targets have u band imaging available.                                                                                                                                                                                     
+    assert  np.all(cat['FLAG_FIELD_BINARY'][:,0] == True)
+
+    imin=20.0
     imax=25.5
     
     # https://arxiv.org/pdf/0903.3951.pdf    
@@ -25,6 +28,6 @@ def gdrop(cat):
     isin = isin & (cat['i'] > 0.0)
     
     # Exclude where we have u imaging.
-    isin = isin & (cat['FLAG_FIELD_BINARY'][:,1] == False)
+    # isin = isin & (cat['FLAG_FIELD_BINARY'][:,1] == False)
         
     return  isin

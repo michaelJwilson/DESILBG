@@ -1,6 +1,6 @@
 import numpy as np
 
-def select_tomog(clauds):
+def tomog(clauds):
     # Quality cuts
     quality = (clauds['u_err'] > 0.0) & (clauds['u_err'] < 10.0) & (clauds['u'] > 0.0) & (clauds['g'] > 0.0) & (clauds['r'] > 0.0) 
     quality = quality & (clauds['g_err'] > 0.0) & (clauds['r_err'] > 0.0)
@@ -15,7 +15,7 @@ def select_tomog(clauds):
     color_box_ext_2 = (umg>0.7) & (umg<1.5) & (umg>2.4*gmr+0.3) & ~color_box & ~color_box_ext_1
     
     # r mag.
-    r_range         = (clauds['r']>22.5) & (clauds['r']<24.5) & quality & (gmr>-0.5)
+    r_range       = (clauds['r']>22.5) & (clauds['r']<24.5) & quality & (gmr>-0.5)
 
     # final selection
     sel_LBG       = color_box & r_range & (clauds['r_err'] < 0.4)
