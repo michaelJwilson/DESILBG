@@ -31,6 +31,7 @@ cat = cat[cat['FLAG_FIELD_BINARY'][:,1] == True]
 
 print('After limiting to the u imaging, COSMOS catalog has {} sources.'.format(len(cat)))
 
+# ugrizy.
 isin = not_bright(cat)
 
 cat = cat[isin]
