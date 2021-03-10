@@ -29,7 +29,9 @@ def bx(cat):
 
     # Catch -99 for ill defined magnitudes. **  Deal with non-detections independently **.
     isin = isin & (cat['u'] > 0.0)
-
+    isin = isin & (cat['g'] > 0.0)
+    isin = isin & (cat['r'] > 0.0)
+    
     # SNR cuts in g and r.                                                                                                                                                                                                                  
     isin = isin & (cat['g_err'] <= 0.1)
     isin = isin & (cat['r_err'] <= 0.2)

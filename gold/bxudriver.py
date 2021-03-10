@@ -51,11 +51,15 @@ cat = cat[isin]
 
 print('COSMOS catalog has {} sources meeting BX | u | u nondetect selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_uarea))
 
+##  --- Prioritization ---
+
 # Keep column list.                                                                                                                                                                                                             
 cols  = pd.read_csv('cols.txt', names=['names']).names
 cols  = cols.tolist()
 
 cat   = cat[cols]
+
+cat.pprint()
 
 cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits', format='fits', overwrite=True)
 

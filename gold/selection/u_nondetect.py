@@ -17,6 +17,10 @@ def u_nondetect(clauds):
     # Non-detected in u: u ~-99.
     isin = clauds['u'] < -40.
 
+    # 
+    isin = isin & (clauds['g'] > 0.0)
+    isin = isin & (clauds['r'] > 0.0)
+    
     # SNR cuts in g and r.
     isin = isin & (clauds['g_err'] <= 0.1)
     isin = isin & (clauds['r_err'] <= 0.2)

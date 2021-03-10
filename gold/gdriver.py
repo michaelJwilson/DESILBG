@@ -14,7 +14,6 @@ np.random.seed(seed=314)
 
 # Area in u-band (approx); [sq. deg.]
 cosmos_garea = 7.84
-cosmos_uarea = 4.41
 
 # Load latest clauds catalog.
 cat = Table.read('/global/cscratch1/sd/mjwilson/clauds/March2021/COSMOS_v9_v210225.fits')
@@ -47,13 +46,15 @@ isin = is_gdrop | is_gnondetect
 
 cat = cat[isin]
 
-print('COSMOS catalog has {} sources meeting g | g nondetect selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / (cosmos_garea - cosmos_uarea)))
+print('COSMOS catalog has {} sources meeting g | g nondetect selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_garea))
 
 # Keep column list.                                                                                                                                                                                                             
 cols  = pd.read_csv('cols.txt', names=['names']).names
 cols  = cols.tolist()
 
 cat = cat[cols]
+
+cat.pprint()
 
 cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/g.fits', format='fits', overwrite=True)
 

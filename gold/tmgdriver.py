@@ -41,11 +41,16 @@ cat = cat[is_tomog]
 
 print('COSMOS catalog has {} sources meeting TMG selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_uarea))
 
+# Prioritize by r.
+cat.sort('r')
+
 # Keep column list.                                                                                                                                                                                                             
 cols  = pd.read_csv('cols.txt', names=['names']).names
 cols  = cols.tolist()
 
-cat = cat[cols]
+cat   = cat[cols]
+
+cat.pprint()
 
 cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/TMGV9/tmg_v9.fits', format='fits', overwrite=True)
 

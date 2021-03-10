@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def tomog(clauds):
     # Quality cuts
     quality = (clauds['u_err'] > 0.0) & (clauds['u_err'] < 10.0) & (clauds['u'] > 0.0) & (clauds['g'] > 0.0) & (clauds['r'] > 0.0) 
