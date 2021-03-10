@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def udrops(clauds):
     '''
     u-drop color selection.

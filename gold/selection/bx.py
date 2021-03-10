@@ -1,11 +1,13 @@
-from udrops import udrops
+import numpy as np
+
+from .udrops import udrops
 
 def bx(cat):
-    rmin=20.
+    rmin=20.0
     rmax=24.5
 
     # Check these targets have u band imaging available.                                                                                                                                                 
-    assert  np.all(clauds['FLAG_FIELD_BINARY'][:,1] == True)
+    assert  np.all(cat['FLAG_FIELD_BINARY'][:,1] == True)
     
     # https://arxiv.org/pdf/0903.3951.pdf
     isin = np.ones(len(cat), dtype=bool)
