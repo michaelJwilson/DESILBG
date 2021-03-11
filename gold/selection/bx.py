@@ -7,7 +7,7 @@ def bx(cat):
     bx color selection.
     '''
     
-    rmin=20.0
+    rmin=22.5
     rmax=24.5
 
     # Check these targets have u band imaging available.                                                                                                                                                 
@@ -23,7 +23,7 @@ def bx(cat):
     isin &= (umg >  0.0)
     isin &= (umg <  3.0)
     isin &= (gmr > -0.5)
-    isin &= (gmr <  1.0)
+    isin &= (gmr <  1.2)
     isin &= (umg >  1.0 + 2.3 * (gmr - 0.35))
 
     isin = isin & (cat['r'] > rmin)

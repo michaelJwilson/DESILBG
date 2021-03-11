@@ -8,7 +8,7 @@ def u_nondetect(clauds):
 
     # 'Detection' band. 
     band='r'
-    magmin=20.0
+    magmin=22.5
     maglim=24.5
     
     # Check these targets have u band imaging available. 
@@ -26,7 +26,8 @@ def u_nondetect(clauds):
     isin = isin & (clauds['r_err'] <= 0.2)
 
     # Same as u drops.
-    isin = isin & (clauds['g'] - clauds['r'] < 1.2)
+    isin = isin & (clauds['g'] - clauds['r'] <  1.2)
+    isin = isin & (clauds['g'] - clauds['r'] > -0.5)
     
     isin = isin & (clauds[band] < maglim)
     isin = isin & (clauds[band] > magmin)

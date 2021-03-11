@@ -8,14 +8,15 @@ def udrops(clauds):
 
     # 'Detection' band. 
     band='r'
-    magmin=20.0
+    magmin=22.5
     maglim=24.5
     
     # Check these targets have u band imaging available. 
     assert  np.all(clauds['FLAG_FIELD_BINARY'][:,1] == True)
     
     isin = clauds['g'] - clauds['r'] < 1.2
-    
+    isin = isin & (clauds['g'] - clauds['r'] > -0.5)
+
     isin = isin & (clauds['u'] - clauds['g'] > 0.88)
     isin = isin & (clauds['u'] - clauds['g'] > 1.99 * (clauds['g'] - clauds['r']) + 0.68)
 

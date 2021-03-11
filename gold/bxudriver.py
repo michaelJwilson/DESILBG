@@ -7,6 +7,8 @@ from not_bright import not_bright
 from selection.udrops import udrops
 from selection.bx import bx
 from selection.u_nondetect import u_nondetect
+from gold_footprint import gold_footprint
+from uniform_magpriority import uniform_magpriority
 
 from datamodel import datamodel
 
@@ -52,23 +54,30 @@ cat = cat[isin]
 
 print('COSMOS catalog has {} sources meeting BX | u | u nondetect selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_uarea))
 
+isin = gold_footprint(cat, interior=True)
+
+cat = cat[isin]
+
+print('COSMOS catalog has {} sources meeting BX | u | u nondetect selection at a target density of {:.3f} per sq. deg., after geometric mask'.format(len(cat), len(cat) / cosmos_uarea))
+
 ##  --- Prioritization ---
-##  Implemented, to be applied.
-##  See uniform_magprior.py
+prioritized_cat = uniform_magpriority('r', 22.5, 24.5, cat)
 
 # Clauds-like datamodel.                                                                                                                                                                                                             
 cols  = pd.read_csv('cols.txt', names=['names']).names
 cols  = cols.tolist()
 
-cat   = cat[cols]
+prioritized_cat = prioritized_cat[cols]
 
-cat.pprint()
+print('\n\n')
 
-cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits', format='fits', overwrite=True)
+prioritized_cat.pprint()
+
+prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits', format='fits', overwrite=True)
 
 ##  ADM-like datamodel.
-cat = datamodel(cat)
+prioritized_cat = datamodel(prioritized_cat)
 
-cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/scnd_bxu.fits', format='fits', overwrite=True)
+prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/scnd_bxu.fits', format='fits', overwrite=True)
 
 print('Writing to {}.'.format('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits'))

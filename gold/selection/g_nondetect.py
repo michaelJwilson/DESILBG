@@ -7,7 +7,7 @@ def g_nondetect(clauds):
 
     # 'Detection' band. 
     band='i'
-    magmin=20.0
+    magmin=22.5
     maglim=25.5
 
     # Check these targets have g available.

@@ -9,7 +9,7 @@ def gdrops(cat):
     # Check these targets have hsc imaging available.                                                                                                                                                                                     
     assert  np.all(cat['FLAG_FIELD_BINARY'][:,0] == True)
 
-    imin=20.0
+    imin=22.5
     imax=25.5
     
     # https://arxiv.org/pdf/0903.3951.pdf    
@@ -20,7 +20,8 @@ def gdrops(cat):
 
     # https://arxiv.org/pdf/1704.06004.pdf
     isin &= gmr >  1.0
-    isin &= rmi <  1.0    
+    isin &= rmi <  1.0
+    isin &= rmi > -1.5
     isin &= gmr >  1.5 * rmi + 0.8
     
     isin  = isin & (cat['i'] > imin)

@@ -2,7 +2,7 @@ import numpy as np
 
 
 def tomog(clauds):
-    # Quality cuts
+    # Quality cuts: requires detection in ugr. 
     quality = (clauds['u_err'] > 0.0) & (clauds['u_err'] < 10.0) & (clauds['u'] > 0.0) & (clauds['g'] > 0.0) & (clauds['r'] > 0.0) 
     quality = quality & (clauds['g_err'] > 0.0) & (clauds['r_err'] > 0.0)
 

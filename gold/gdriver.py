@@ -7,6 +7,8 @@ from not_bright import not_bright
 from selection.gdrops import gdrops
 from selection.g_nondetect import g_nondetect
 
+from uniform_magpriority import uniform_magpriority
+
 from datamodel import datamodel
 
 # Safeguard, but should be unncessary. 
@@ -49,23 +51,24 @@ cat = cat[isin]
 
 print('COSMOS catalog has {} sources meeting g | g nondetect selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_garea))
 
-##  --- Prioritization ---                                                                                                                                                                                                                    
-##  Implemented, to be applied. 
-##  See  uniform_magprior.py
+##  --- Prioritization ---                                                                                                                                                                                                                   
+prioritized_cat = uniform_magpriority('i', 22.5, 25.5, cat)
 
 # clauds-like data model.                                                                                                                                                                                                             
 cols  = pd.read_csv('cols.txt', names=['names']).names
 cols  = cols.tolist()
 
-cat = cat[cols]
+prioritized_cat = prioritized_cat[cols]
 
-cat.pprint()
+print('\n\n')
 
-cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/g.fits', format='fits', overwrite=True)
+prioritized_cat.pprint()
+
+prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/g.fits', format='fits', overwrite=True)
 
 # ADM-like data model. 
-cat = datamodel(cat)
+prioritized_cat = datamodel(prioritized_cat)
 
-cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/scnd_g.fits', format='fits', overwrite=True)
+prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/scnd_g.fits', format='fits', overwrite=True)
 
 print('Writing to {}.'.format('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/g.fits'))

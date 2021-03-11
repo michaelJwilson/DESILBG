@@ -3,9 +3,8 @@ import pandas as pd
 
 from astropy.table import Table
 from not_bright import not_bright
-
 from selection.tomog import tomog
-
+from gold_footprint import gold_footprint
 from datamodel import datamodel
 
 # Safeguard, but should be unncessary. 
@@ -42,6 +41,12 @@ cat = cat[is_tomog]
 
 print('COSMOS catalog has {} sources meeting TMG selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_uarea))
 
+isin = gold_footprint(cat, interior=True)
+
+cat = cat[isin]
+
+print('COSMOS catalog has {} sources meeting TMG selection at a target density of {:.3f} per sq. deg., after geometric mask'.format(len(cat), len(cat) / cosmos_uarea))
+
 # Prioritize by r; brightest first. 
 cat.sort('r')
 
@@ -50,6 +55,8 @@ cols  = pd.read_csv('cols.txt', names=['names']).names
 cols  = cols.tolist()
 
 cat   = cat[cols]
+
+print('\n\n')
 
 cat.pprint()
 

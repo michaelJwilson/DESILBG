@@ -4,7 +4,7 @@ from   astropy.table import Table, vstack
 
 npertranche = 200
 
-def uniform_magpriority(band, magmin, magmax, cat):
+def uniform_magpriority(band, magmin, magmax, cat, verbose=False):
     # Do not sort in mag.     
     bins = np.arange(magmin, magmax, 0.25)
 
@@ -15,8 +15,9 @@ def uniform_magpriority(band, magmin, magmax, cat):
     idx  = np.digitize(cat[band], bins, right=False)
     cat['IDX'] = idx
 
-    print('\n\n---- To do summary ----')  
-    print(np.unique(cat['IDX'], return_counts=True))
+    if verbose:
+        print('\n\n---- To do summary ----')  
+        print(np.unique(cat['IDX'], return_counts=True))
     
     ndone = 0
     warnings = 0
@@ -37,7 +38,8 @@ def uniform_magpriority(band, magmin, magmax, cat):
 
           subcat = subcat[:nrow]          
 
-          subcat.pprint()
+          if verbose:
+              subcat.pprint()
           
           if prioritized_cat == None:
               prioritized_cat = subcat
@@ -66,18 +68,17 @@ def uniform_magpriority(band, magmin, magmax, cat):
           # print('\n\n---- To do summary ----')
           # print(np.unique(cat[todo]['IDX'], return_counts=True))
           
-    print('Done.')
-    print('\n\n')
-
     # Unique
     assert np.all(np.unique(prioritized_cat['ID']) == np.sort(prioritized_cat['ID']))
     
     # Nothing lost.
     assert np.all(np.unique(prioritized_cat['ID']) == np.unique(cat['ID']))
-    
-    prioritized_cat.pprint()
 
-    # del cat['IDX']
+    if verbose:
+        print('Done.')
+        print('\n\n')
+    
+        prioritized_cat.pprint()
 
     return prioritized_cat
 
