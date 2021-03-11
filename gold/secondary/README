@@ -1,0 +1,5 @@
+git clone https://github.com/desihub/desitarget.git
+
+cd desitarget
+
+git checkout tags/0.51.0

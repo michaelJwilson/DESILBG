@@ -1,9 +1,8 @@
-# Create BXU catalogue.
-bxudriver.py 
+# Create BXU catalogue: calls selection/ bx.py, udrops.py, u_nondetect.py
+python bxudriver.py > bxudriver.log
 
-# Create g drops catalogue.
-gdriver.py 
+# Create g drops catalogue: calls selection/ gdrops.py, g_nondetect.py
+# python gdriver.py > gdriver.log
 
-#
-Create TOMOG-like catalogue.
-tmgdriver.py
+# Create TOMOG-like catalogue: calls selection/ tomog.py
+# python tmgdriver.py > tmgdriver.log
