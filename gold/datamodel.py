@@ -8,7 +8,7 @@ def datamodel(cat):
     cat['PMDEC'] = 0.0
 
     cat['REF_EPOCH'] = np.array([0.0] * len(cat), dtype='>f4')
-    cat['OVERRIDE'] = False
+    cat['OVERRIDE'] = True
 
     cat['RA']  = cat['RA'].data.astype('>f8')
     cat['DEC'] = cat['DEC'].data.astype('>f8')
