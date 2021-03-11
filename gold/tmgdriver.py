@@ -50,6 +50,9 @@ print('COSMOS catalog has {} sources meeting TMG selection at a target density o
 # Prioritize by r; brightest first. 
 cat.sort('r')
 
+# No uniform mag. applied.
+cat['IDX'] = -99
+
 # clauds-like datamodel.                                                                                                                                                                                                             
 cols  = pd.read_csv('cols.txt', names=['names']).names
 cols  = cols.tolist()
