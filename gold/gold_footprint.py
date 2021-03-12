@@ -23,12 +23,15 @@ def gold_footprint(cat, interior=True):
 
     
 if __name__ == '__main__': 
-   band  ='r'
-   title ='BX/U/NONDETECT'
-   fpath = '/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits'
+   band   ='r'
+   title  ='Clauds'
+   fpath  = '/global/cscratch1/sd/mjwilson/clauds/March2021/COSMOS_v9_v210225.fits'
    
-   dat   = Table.read(fpath)
-
+   dat    = Table.read(fpath)
+   
+   dat    = dat[dat['FLAG_FIELD_BINARY'][:,1] == True]   
+   dat    = dat[::10]
+   
    # No interior mask. 
    isin  = gold_footprint(dat, interior=False)
    
@@ -39,12 +42,13 @@ if __name__ == '__main__':
    interior_excluded = isin & (~isint)
 
    fig, ax = plt.subplots(1, 1, figsize=(10,10))
+
+   # ax.plot(dat['RA'], dat['DEC'], marker='.', lw=0.0, markersize=.5, c='k')
    
    ax.plot(dat['RA'][exterior_excluded], dat['DEC'][exterior_excluded], marker='.', lw=0.0, markersize=.5, c='r')
-   ax.plot(dat['RA'][interior_excluded], dat['DEC'][interior_excluded], marker='.', lw=0.0, markersize=.5, c='m')
-
+   ax.plot(dat['RA'][interior_excluded], dat['DEC'][interior_excluded], marker='.', lw=0.0, markersize=.5, c='m')   
    ax.plot(dat['RA'][isint], dat['DEC'][isint], marker='.', lw=0.0, markersize=.5, c='k')
-
+   
    ax.set_title('Gold geometric mask')
 
    pl.show()
