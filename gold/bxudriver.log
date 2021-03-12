@@ -11,12 +11,12 @@ Excluding a total of 1219 bright source.
 After removing bright sources, COSMOS catalog has 2756231 sources.
 With BX selection, COSMOS catalog has 12161 sources.
 With u selection, COSMOS catalog has 5233 sources.
-With u-nondetect selection, COSMOS catalog has 1404 sources.
-COSMOS catalog has 18798 sources meeting BX | u | u nondetect selection at a target density of 4262.585 per sq. deg.
-COSMOS catalog has 16747 sources meeting BX | u | u nondetect selection at a target density of 3797.506 per sq. deg., after geometric mask
+With u-nondetect selection, COSMOS catalog has 3467 sources.
+COSMOS catalog has 19266 sources meeting BX | u | u nondetect selection at a target density of 4368.707 per sq. deg.
+COSMOS catalog has 16839 sources meeting BX | u | u nondetect selection at a target density of 3818.367 per sq. deg., after geometric mask
 With BX selection, COSMOS catalog has 11326 sources, after geometric mask.
 With u selection, COSMOS catalog has 4624 sources, after geometric mask.
-With u-nondetect selection, COSMOS catalog has 797 sources, after geometric mask.
+With u-nondetect selection, COSMOS catalog has 2023 sources, after geometric mask.
 magmin passed: 22.5; magmin found: 22.501 for band: r.
 magmax passed: 24.5; magmax found: 24.499 for band: r.
 
@@ -46,5 +46,5 @@ magmax passed: 24.5; magmax found: 24.499 for band: r.
 5254996 150.89816369794585 1.9215185324036328    0 ... 1000.0 1000.0  3.393   8
 5259167 150.89868742574836  2.612177247731551    0 ... 1000.0 1000.0 2.1388   8
 5262199 150.89904240288317  2.978026866530625    0 ... 1000.0 1000.0 2.2445   8
-Length = 16747 rows
+Length = 16839 rows
 Writing to /global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits.
