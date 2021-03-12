@@ -3,3 +3,13 @@ git clone https://github.com/desihub/desitarget.git
 cd desitarget
 
 git checkout tags/0.51.0
+
+##
+git clone --single-branch --branch sv1_scnd https://github.com/desihub/fiberassign
+
+cd fiberassign 
+
+# python setup.py clean; python setup.py build_ext --inplace
+
+export PATH=/global/homes/m/mjwilson/DESILBG/gold/secondary/fiberassign/bin/:$PATH
+export PYTHONPATH=/global/homes/m/mjwilson/DESILBG/gold/secondary/fiberassign/py/:$PYTHONPATH

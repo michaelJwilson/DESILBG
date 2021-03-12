@@ -16,7 +16,8 @@ def u_nondetect(clauds):
 
     # Non-detected in u: u ~-99.
     isin = clauds['u'] < -40.
-
+    isin = isin | (clauds['u_err'] >= 0.5)
+    
     # 
     isin = isin & (clauds['g'] > 0.0)
     isin = isin & (clauds['r'] > 0.0)
