@@ -5,6 +5,13 @@ from   astropy.table import Table, vstack
 npertranche = 200
 
 def uniform_magpriority(band, magmin, magmax, cat, verbose=False):
+    # Sanity check.
+    assert  np.isclose(magmin, cat[band].min(), atol=1.e-2)
+    assert  np.isclose(magmax, cat[band].max(), atol=1.e-2)
+
+    print('magmin passed: {}; magmin found: {} for band: {}.'.format(magmin, cat[band].min(), band))
+    print('magmax passed: {}; magmax found: {} for band: {}.'.format(magmax, cat[band].max(), band))
+    
     # Do not sort in mag.     
     bins = np.arange(magmin, magmax, 0.25)
 
