@@ -60,6 +60,15 @@ cat = cat[isin]
 
 print('COSMOS catalog has {} sources meeting BX | u | u nondetect selection at a target density of {:.3f} per sq. deg., after geometric mask'.format(len(cat), len(cat) / cosmos_uarea))
 
+# For info only. 
+is_bx = bx(cat)
+is_udrop = udrops(cat)
+is_unondetect = u_nondetect(cat)
+
+print('With BX selection, COSMOS catalog has {} sources, after geometric mask.'.format(np.count_nonzero(is_bx)))
+print('With u selection, COSMOS catalog has {} sources, after geometric mask.'.format(np.count_nonzero(is_udrop)))
+print('With u-nondetect selection, COSMOS catalog has {} sources, after geometric mask.'.format(np.count_nonzero(is_unondetect)))
+
 ##  --- Prioritization ---
 prioritized_cat = uniform_magpriority('r', 22.5, 24.5, cat)
 

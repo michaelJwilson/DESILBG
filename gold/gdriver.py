@@ -51,7 +51,7 @@ cat = cat[isin]
 
 print('COSMOS catalog has {} sources meeting g | g nondetect selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_garea))
 
-##  --- Prioritization ---                                                                                                                                                                                                                   
+##  --- Prioritization ---
 prioritized_cat = uniform_magpriority('i', 22.5, 25.5, cat)
 
 # clauds-like data model.                                                                                                                                                                                                             
@@ -63,6 +63,8 @@ prioritized_cat = prioritized_cat[cols]
 print('\n\n')
 
 prioritized_cat.pprint()
+
+exit(0)
 
 prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/g.fits', format='fits', overwrite=True)
 
