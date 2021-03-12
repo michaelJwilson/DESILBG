@@ -1,18 +1,24 @@
 Latest COSMOS catalog has 5263013 sources.
 After stellar masking, COSMOS catalog has 4426066 sources.
 After limiting to the u imaging, COSMOS catalog has 2757450 sources.
-Excluding 116 bright source in u.
-Excluding 98 bright source in g.
-Excluding 166 bright source in r.
-Excluding 383 bright source in i.
-Excluding 704 bright source in z.
-Excluding 1093 bright source in y.
+Excluding 116 bright source in u [10.29, 16.99].
+Excluding 98 bright source in g [10.98, 17.00].
+Excluding 166 bright source in r [13.53, 16.99].
+Excluding 383 bright source in i [12.82, 17.00].
+Excluding 704 bright source in z [12.32, 17.00].
+Excluding 1093 bright source in y [12.05, 17.00].
+Excluding a total of 1219 bright source.
 After removing bright sources, COSMOS catalog has 2756231 sources.
 With BX selection, COSMOS catalog has 12161 sources.
 With u selection, COSMOS catalog has 5233 sources.
 With u-nondetect selection, COSMOS catalog has 1404 sources.
 COSMOS catalog has 18798 sources meeting BX | u | u nondetect selection at a target density of 4262.585 per sq. deg.
 COSMOS catalog has 16747 sources meeting BX | u | u nondetect selection at a target density of 3797.506 per sq. deg., after geometric mask
+With BX selection, COSMOS catalog has 11326 sources, after geometric mask.
+With u selection, COSMOS catalog has 4624 sources, after geometric mask.
+With u-nondetect selection, COSMOS catalog has 797 sources, after geometric mask.
+magmin passed: 22.5; magmin found: 22.501 for band: r.
+magmax passed: 24.5; magmax found: 24.499 for band: r.
 
 
 
