@@ -1,12 +1,12 @@
 import numpy as np
 
-def tomog(cat):
+def bxu(cat):
     '''
     bxu color selection.
     '''
     
-    rmin=22.50
-    rmax=23.75
+    rmin=22.5
+    rmax=24.5
 
     # Check these targets have u band imaging available.                                                                                                                                                 
     assert  np.all(cat['FLAG_FIELD_BINARY'][:,1] == True)
@@ -17,13 +17,11 @@ def tomog(cat):
     umg = cat['u'] - cat['g']
     gmr = cat['g'] - cat['r']
     
-    # LATIS, https://arxiv.org/pdf/2002.10676.pdf
-    isin &= (umg >  0.3)
+    isin &= (umg >  0.0)
     isin &= (gmr > -0.5)
-    isin &= (gmr <  1.0)
-
+    isin &= (gmr <  1.2)
     isin &= ((umg > 0.32 + 2.2 * gmr) | ((umg>0.9) & (umg > 1.6*gmr+0.75)))
-    
+
     isin = isin & (cat['r'] > rmin)
     isin = isin & (cat['r'] < rmax)
     
@@ -33,6 +31,6 @@ def tomog(cat):
     isin = isin & (cat['r'] > 0.0)
     
     # SNR cuts in g and r.
-    isin = isin & (cat['r_err'] <= 0.4)
+    isin = isin & (cat['r_err'] <= 0.2)
     
     return  isin

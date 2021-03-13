@@ -32,8 +32,8 @@ def gdrops(cat):
     isin = isin & (cat['r'] > 0.0)
     isin = isin & (cat['i'] > 0.0)
 
-    # SNR cuts in r and i.                                                                                                                                                                                                                  
-    isin = isin & (cat['r_err'] <= 0.1)
+    # SNR cuts in r and i.
+    isin = isin & (cat['r_err'] <= 0.2)
     isin = isin & (cat['i_err'] <= 0.2)
             
     return  isin

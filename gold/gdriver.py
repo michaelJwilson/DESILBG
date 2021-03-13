@@ -64,13 +64,11 @@ print('\n\n')
 
 prioritized_cat.pprint()
 
-exit(0)
-
-prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/g.fits', format='fits', overwrite=True)
+prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_G/desilbg_g.fits', format='fits', overwrite=True)
 
 # ADM-like data model. 
 prioritized_cat = datamodel(prioritized_cat)
 
-prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/scnd_g.fits', format='fits', overwrite=True)
+prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_G/desilbg_g_scnd.fits', format='fits', overwrite=True)
 
-print('Writing to {}.'.format('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/G/g.fits'))
+print('Writing to {}.'.format('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_G/desilbg_g.fits'))

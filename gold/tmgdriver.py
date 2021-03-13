@@ -63,9 +63,11 @@ print('\n\n')
 
 cat.pprint()
 
-cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/TMGV9/tmg_v9.fits', format='fits', overwrite=True)
+cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_TMG/desilbg_tmg.fits', format='fits', overwrite=True)
 
 ##  ADM-like datamodel.
 cat = datamodel(cat)
 
-cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/TMGV9/scnd_tmg_v9.fits', format='fits', overwrite=True)
+cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_TMG/desilbg_tmg_scnd.fits', format='fits', overwrite=True)
+
+print('Writing to {}.'.format('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_TMGG/desilbg_tmg.fits'))

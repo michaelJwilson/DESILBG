@@ -4,8 +4,7 @@ import pandas as pd
 from astropy.table import Table
 from not_bright import not_bright
 
-from selection.udrops import udrops
-from selection.bx import bx
+from selection.bxu import bxu
 from selection.u_nondetect import u_nondetect
 from gold_footprint import gold_footprint
 from uniform_magpriority import uniform_magpriority
@@ -40,15 +39,13 @@ cat = cat[isin]
 
 print('After removing bright sources, COSMOS catalog has {} sources.'.format(len(cat)))
 
-is_bx = bx(cat)
-is_udrop = udrops(cat)
+is_bxu = bxu(cat)
 is_unondetect = u_nondetect(cat)
 
-print('With BX selection, COSMOS catalog has {} sources.'.format(np.count_nonzero(is_bx)))
-print('With u selection, COSMOS catalog has {} sources.'.format(np.count_nonzero(is_udrop)))
+print('With BXU selection, COSMOS catalog has {} sources.'.format(np.count_nonzero(is_bxu)))
 print('With u-nondetect selection, COSMOS catalog has {} sources.'.format(np.count_nonzero(is_unondetect)))
 
-isin = is_bx | is_udrop | is_unondetect
+isin = is_bxu | is_unondetect
 
 cat = cat[isin]
 
@@ -61,18 +58,16 @@ cat = cat[isin]
 print('COSMOS catalog has {} sources meeting BX | u | u nondetect selection at a target density of {:.3f} per sq. deg., after geometric mask'.format(len(cat), len(cat) / cosmos_uarea))
 
 # For info only. 
-is_bx = bx(cat)
-is_udrop = udrops(cat)
+is_bxu = bxu(cat)
 is_unondetect = u_nondetect(cat)
 
-print('With BX selection, COSMOS catalog has {} sources, after geometric mask.'.format(np.count_nonzero(is_bx)))
-print('With u selection, COSMOS catalog has {} sources, after geometric mask.'.format(np.count_nonzero(is_udrop)))
+print('With BXU selection, COSMOS catalog has {} sources, after geometric mask.'.format(np.count_nonzero(is_bxu)))
 print('With u-nondetect selection, COSMOS catalog has {} sources, after geometric mask.'.format(np.count_nonzero(is_unondetect)))
 
 ##  --- Prioritization ---
 prioritized_cat = uniform_magpriority('r', 22.5, 24.5, cat)
 
-# Clauds-like datamodel.                                                                                                                                                                                                             
+# Clauds-like datamodel.
 cols  = pd.read_csv('cols.txt', names=['names']).names
 cols  = cols.tolist()
 
@@ -82,11 +77,11 @@ print('\n\n')
 
 prioritized_cat.pprint()
 
-prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits', format='fits', overwrite=True)
+prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_BXU/desilbg_bxu.fits', format='fits', overwrite=True)
 
 ##  ADM-like datamodel.
 prioritized_cat = datamodel(prioritized_cat)
 
-prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/scnd_bxu.fits', format='fits', overwrite=True)
+prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_BXU/desilbg_bxu_scnd.fits', format='fits', overwrite=True)
 
-print('Writing to {}.'.format('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/BXU/bxu.fits'))
+print('Writing to {}.'.format('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_BXU/desilbg_bxu.fits'))

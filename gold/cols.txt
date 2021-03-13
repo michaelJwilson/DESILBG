@@ -28,7 +28,5 @@ J_err
 H_err
 Ks_err
 Z_BC03
+Z_SPEC
 IDX
-
-
-

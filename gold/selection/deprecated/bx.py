@@ -18,7 +18,7 @@ def bx(cat):
 
     umg = cat['u'] - cat['g']
     gmr = cat['g'] - cat['r']
-
+    
     # LATIS, https://arxiv.org/pdf/2002.10676.pdf
     isin &= (umg >  0.0)
     isin &= (umg <  3.0)
