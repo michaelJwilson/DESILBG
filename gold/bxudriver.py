@@ -11,6 +11,11 @@ from uniform_magpriority import uniform_magpriority
 
 from datamodel import datamodel
 
+overwrite=False
+
+root='/global/cscratch1/sd/mjwilson/DESILBG/TEST/'
+# root='/global/cscratch1/sd/mjwilson/DESILBG/GOLD/'
+
 # Safeguard, but should be unncessary. 
 np.random.seed(seed=314)
 
@@ -77,11 +82,15 @@ print('\n\n')
 
 prioritized_cat.pprint()
 
-prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_BXU/desilbg_bxu.fits', format='fits', overwrite=True)
+if overwrite:
+    prioritized_cat.write('{}/DESILBG_BXU/desilbg_bxu.fits'.format(root), format='fits', overwrite=overwrite)
 
-##  ADM-like datamodel.
-prioritized_cat = datamodel(prioritized_cat)
+    ##  ADM-like datamodel.
+    prioritized_cat = datamodel(prioritized_cat)
 
-prioritized_cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_BXU/desilbg_bxu_scnd.fits', format='fits', overwrite=True)
+    prioritized_cat.write('{}/DESILBG_BXU/desilbg_bxu_scnd.fits'.format(root), format='fits', overwrite=overwrite)
 
-print('Writing to {}.'.format('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_BXU/desilbg_bxu.fits'))
+    print('Writing to {}.'.format('{}/DESILBG_BXU/desilbg_bxu.fits'.format(root)))
+
+else:
+    print('WARNING:  Test run, files not written.  Would write to: {}'.format('{}/DESILBG_BXU/desilbg_bxu.fits'.format(root)))

@@ -7,6 +7,11 @@ from selection.tomog import tomog
 from gold_footprint import gold_footprint
 from datamodel import datamodel
 
+overwrite=False
+
+root='/global/cscratch1/sd/mjwilson/DESILBG/TEST/'
+# root='/global/cscratch1/sd/mjwilson/DESILBG/GOLD/' 
+
 # Safeguard, but should be unncessary. 
 np.random.seed(seed=314)
 
@@ -63,11 +68,15 @@ print('\n\n')
 
 cat.pprint()
 
-cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_TMG/desilbg_tmg.fits', format='fits', overwrite=True)
+if overwrite:
+    cat.write('{}/DESILBG_TMG/desilbg_tmg.fits'.format(root), format='fits', overwrite=overwrite)
 
-##  ADM-like datamodel.
-cat = datamodel(cat)
+    ##  ADM-like datamodel.
+    cat = datamodel(cat)
 
-cat.write('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_TMG/desilbg_tmg_scnd.fits', format='fits', overwrite=True)
+    cat.write('{}/DESILBG_TMG/desilbg_tmg_scnd.fits'.format(root), format='fits', overwrite=overwrite)
 
-print('Writing to {}.'.format('/global/cscratch1/sd/mjwilson/DESILBG/GOLD/DESILBG_TMGG/desilbg_tmg.fits'))
+    print('Writing to {}.'.format('{}/DESILBG_TMG/desilbg_tmg.fits'.format(root)))
+
+else:
+    print('WARNING:  Test run, files not written.  Would write to: {}'.format('{}/DESILBG_TMG/desilbg_tmg.fits'.format(root)))
