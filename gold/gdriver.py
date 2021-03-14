@@ -57,10 +57,19 @@ cat = cat[isin]
 
 print('COSMOS catalog has {} sources meeting g | g nondetect selection at a target density of {:.3f} per sq. deg.'.format(len(cat), len(cat) / cosmos_garea))
 
+check_cat = Table(cat, copy=True)
+check_ids = np.array(np.unique(check_cat['ID']), copy=True)
+
 ##  --- Prioritization ---
 prioritized_cat = uniform_magpriority('i', 22.5, 25.5, cat)
 
-# clauds-like data model.                                                                                                                                                                                                             
+assert np.all(np.sort(prioritized_cat['ID']) == check_ids)
+
+assert np.all(prioritized_cat['RA'][np.argsort(prioritized_cat['ID'])] == check_cat['RA'][np.argsort(check_cat['ID'])])
+assert np.all(prioritized_cat['DEC'][np.argsort(prioritized_cat['ID'])] == check_cat['DEC'][np.argsort(check_cat['ID'])])
+assert np.all(prioritized_cat['i'][np.argsort(prioritized_cat['ID'])] == check_cat['i'][np.argsort(check_cat['ID'])])
+
+# clauds-like data model.                                                                                                                                                                                      
 cols  = pd.read_csv('cols.txt', names=['names']).names
 cols  = cols.tolist()
 

@@ -69,8 +69,17 @@ is_unondetect = u_nondetect(cat)
 print('With BXU selection, COSMOS catalog has {} sources, after geometric mask.'.format(np.count_nonzero(is_bxu)))
 print('With u-nondetect selection, COSMOS catalog has {} sources, after geometric mask.'.format(np.count_nonzero(is_unondetect)))
 
+check_cat = Table(cat, copy=True)
+check_ids = np.array(np.unique(check_cat['ID']), copy=True)
+
 ##  --- Prioritization ---
 prioritized_cat = uniform_magpriority('r', 22.5, 24.5, cat)
+
+assert np.all(np.sort(prioritized_cat['ID']) == check_ids)
+
+assert np.all(prioritized_cat['RA'][np.argsort(prioritized_cat['ID'])] == check_cat['RA'][np.argsort(check_cat['ID'])])                                                                                                                       
+assert np.all(prioritized_cat['DEC'][np.argsort(prioritized_cat['ID'])] == check_cat['DEC'][np.argsort(check_cat['ID'])])                                                                                                                     
+assert np.all(prioritized_cat['r'][np.argsort(prioritized_cat['ID'])] == check_cat['r'][np.argsort(check_cat['ID'])])  
 
 # Clauds-like datamodel.
 cols  = pd.read_csv('cols.txt', names=['names']).names
